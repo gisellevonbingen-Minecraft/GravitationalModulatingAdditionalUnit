@@ -1,13 +1,13 @@
 modLoader="javafml"
 loaderVersion="[40,)"
 license="MIT"
-issueTrackerURL="https://github.com/gisellevonbingen/Minecraft-BossTools-Addon/issues"
+issueTrackerURL="https://github.com/gisellevonbingen/Minecraft-GravitationalModulatingAdditionalUnit/issues"
 
 [[mods]]
     modId="gravitationalmodulatingunittweaks"
     version="${file.jarVersion}"
     displayName="Gravitational Modulating Additional Unit"
-    displayURL="https://www.curseforge.com/minecraft/mc-mods/space-bosstools-giselle-addon"
+    displayURL="https://www.curseforge.com/minecraft/mc-mods/gravitational-modulating-additional-unit"
     authors="gisellevonbingen"
     description=''''''
     itemIcon="gravitationalmodulatingunittweaks:module_gravitational_modulating_additional_unit" #for Catalogue
