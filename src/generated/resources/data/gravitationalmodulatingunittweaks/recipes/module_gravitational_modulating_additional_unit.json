@@ -1,0 +1,25 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "pattern": [
+    "ACA",
+    "ABA",
+    "PPP"
+  ],
+  "key": {
+    "A": {
+      "tag": "mekanism:alloys/reinforced"
+    },
+    "C": {
+      "tag": "forge:circuits/ultimate"
+    },
+    "B": {
+      "item": "mekanism:module_base"
+    },
+    "P": {
+      "tag": "forge:pellets/polonium"
+    }
+  },
+  "result": {
+    "item": "gravitationalmodulatingunittweaks:module_gravitational_modulating_additional_unit"
+  }
+}
