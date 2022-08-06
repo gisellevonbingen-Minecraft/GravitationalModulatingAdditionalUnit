@@ -23,7 +23,7 @@ public class ClientEventHandler
 		Player player = mc.player;
 		IModule<ModuleGravitationalModulatingAdditionalUnit> module = MekanismAPI.getModuleHelper().load(player.getItemBySlot(EquipmentSlot.CHEST), GMUTModules.GRAVITATIONAL_MODULATING_ADDITIONAL_UNIT);
 
-		if (module != null)
+		if (module != null && module.isEnabled() == true)
 		{
 			boolean fixFOV = module.getCustomInstance().getFixFOV().get();
 
