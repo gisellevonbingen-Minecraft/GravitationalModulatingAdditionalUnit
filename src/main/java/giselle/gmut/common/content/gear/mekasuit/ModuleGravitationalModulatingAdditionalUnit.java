@@ -17,12 +17,14 @@ public class ModuleGravitationalModulatingAdditionalUnit implements ICustomModul
 {
 	private IModuleConfigItem<Boolean> flyAlways;
 	private IModuleConfigItem<Boolean> stopImmediately;
+	private IModuleConfigItem<Boolean> fixFOV;
 
 	@Override
 	public void init(IModule<ModuleGravitationalModulatingAdditionalUnit> module, ModuleConfigItemCreator configItemCreator)
 	{
 		this.flyAlways = configItemCreator.createConfigItem("fly_always", GMUTLang.MODULE_FLY_ALWAYS, new ModuleBooleanData(false));
 		this.stopImmediately = configItemCreator.createConfigItem("stop_immediately", GMUTLang.MODULE_STOP_IMMEDIATELY, new ModuleBooleanData(true));
+		this.fixFOV = configItemCreator.createConfigItem("fix_fov", GMUTLang.MODULE_FIX_FOV, new ModuleBooleanData(false));
 	}
 
 	@Override
@@ -63,6 +65,11 @@ public class ModuleGravitationalModulatingAdditionalUnit implements ICustomModul
 	public IModuleConfigItem<Boolean> getStopImmediately()
 	{
 		return this.stopImmediately;
+	}
+
+	public IModuleConfigItem<Boolean> getFixFOV()
+	{
+		return this.fixFOV;
 	}
 
 }

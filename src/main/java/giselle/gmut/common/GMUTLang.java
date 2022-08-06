@@ -12,6 +12,7 @@ public enum GMUTLang implements ILangEntry
 	// Modules
 	MODULE_FLY_ALWAYS("module", "fly_always"),
 	MODULE_STOP_IMMEDIATELY("module", "stop_immediately"),
+	MODULE_FIX_FOV("module", "fix_fov"),
 	// EOL
 	;
 

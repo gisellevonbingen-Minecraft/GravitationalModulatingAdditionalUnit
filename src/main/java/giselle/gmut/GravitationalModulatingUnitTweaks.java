@@ -3,17 +3,11 @@ package giselle.gmut;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
-import giselle.gmut.common.content.gear.mekasuit.ModuleGravitationalModulatingAdditionalUnit;
 import giselle.gmut.common.registries.GMUTItems;
 import giselle.gmut.common.registries.GMUTModules;
-import mekanism.api.MekanismAPI;
 import mekanism.api.MekanismIMC;
-import mekanism.api.gear.IModule;
-import mekanism.api.gear.config.IModuleConfigItem;
 import mekanism.common.lib.Version;
 import net.minecraft.resources.ResourceLocation;
-import net.minecraft.world.entity.EquipmentSlot;
-import net.minecraft.world.entity.player.Player;
 import net.minecraftforge.eventbus.api.IEventBus;
 import net.minecraftforge.fml.ModLoadingContext;
 import net.minecraftforge.fml.common.Mod;
@@ -41,6 +35,11 @@ public class GravitationalModulatingUnitTweaks
 		instance = this;
 		this.version = new Version(ModLoadingContext.get().getActiveContainer());
 
+		this.registerFML();
+	}
+
+	private void registerFML()
+	{
 		IEventBus fml_bus = FMLJavaModLoadingContext.get().getModEventBus();
 		fml_bus.addListener(this::commonSetup);
 		fml_bus.addListener(this::imcQueue);
@@ -57,29 +56,6 @@ public class GravitationalModulatingUnitTweaks
 	private void imcQueue(InterModEnqueueEvent event)
 	{
 		MekanismIMC.addMekaSuitBodyarmorModules(GMUTModules.GRAVITATIONAL_MODULATING_ADDITIONAL_UNIT);
-	}
-
-	public void switchAlwaysFly(Player player)
-	{
-		if (player == null)
-		{
-			return;
-		}
-
-		IModule<ModuleGravitationalModulatingAdditionalUnit> module = MekanismAPI.getModuleHelper().load(player.getItemBySlot(EquipmentSlot.CHEST), GMUTModules.GRAVITATIONAL_MODULATING_ADDITIONAL_UNIT);
-
-		if (module != null)
-		{
-			IModuleConfigItem<Boolean> flyAlways = module.getCustomInstance().getFlyAlways();
-			flyAlways.set(!flyAlways.get());
-
-			if ((boolean) flyAlways.get() == false)
-			{
-				player.getAbilities().flying = false;
-			}
-
-		}
-
 	}
 
 	public static ResourceLocation rl(String path)
