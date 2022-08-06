@@ -34,7 +34,11 @@ public class ModuleGravitationalModulatingAdditionalUnit implements ICustomModul
 		{
 			if (this.flyAlways.get() == true)
 			{
-				player.getAbilities().flying = true;
+				if (player.isCrouching() == false)
+				{
+					player.getAbilities().flying = true;
+				}
+
 			}
 
 			if (this.stopImmediately.get() == true)
