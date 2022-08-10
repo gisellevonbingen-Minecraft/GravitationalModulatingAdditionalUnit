@@ -9,7 +9,7 @@ import net.minecraft.client.Minecraft;
 import net.minecraft.world.entity.EquipmentSlot;
 import net.minecraft.world.entity.player.Player;
 import net.minecraftforge.api.distmarker.Dist;
-import net.minecraftforge.client.event.FOVModifierEvent;
+import net.minecraftforge.client.event.ComputeFovModifierEvent;
 import net.minecraftforge.eventbus.api.SubscribeEvent;
 import net.minecraftforge.fml.common.Mod;
 
@@ -17,7 +17,7 @@ import net.minecraftforge.fml.common.Mod;
 public class ClientEventHandler
 {
 	@SubscribeEvent
-	public static void onFOVModifier(FOVModifierEvent e)
+	public static void onComputeFovModifier(ComputeFovModifierEvent e)
 	{
 		Minecraft mc = Minecraft.getInstance();
 		Player player = mc.player;
@@ -29,7 +29,7 @@ public class ClientEventHandler
 
 			if (fixFOV == true)
 			{
-				e.setNewfov(1.0F);
+				e.setNewFovModifier(1.0F);
 			}
 
 		}

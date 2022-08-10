@@ -1,5 +1,5 @@
 modLoader="javafml"
-loaderVersion="[40,)"
+loaderVersion="[43,)"
 license="MIT"
 issueTrackerURL="https://github.com/gisellevonbingen/Minecraft-GravitationalModulatingAdditionalUnit/issues"
 
@@ -15,20 +15,20 @@ issueTrackerURL="https://github.com/gisellevonbingen/Minecraft-GravitationalModu
 [[dependencies.gravitationalmodulatingunittweaks]]
     modId="forge"
     mandatory=true
-    versionRange="[40.1.46,)"
+    versionRange="[43.0.7,)"
     ordering="NONE"
     side="BOTH"
 
 [[dependencies.gravitationalmodulatingunittweaks]]
     modId="minecraft"
     mandatory=true
-    versionRange="[1.18.2,)"
+    versionRange="[1.19.2,)"
     ordering="NONE"
     side="BOTH"
 
 [[dependencies.gravitationalmodulatingunittweaks]]
     modId="mekanism"
     mandatory=true
-    versionRange="[10.2.5,)"
+    versionRange="[10.3.2,)"
     ordering="AFTER"
     side="BOTH"
