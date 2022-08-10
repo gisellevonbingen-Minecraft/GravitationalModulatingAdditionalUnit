@@ -7,6 +7,10 @@ Provide addtional features
 
 * [1.18.2](https://github.com/gisellevonbingen/Minecraft-GravitationalModulatingAdditionalUnit/tree/1.18.2)
 
+### 1.19
+
+* [1.19.2](https://github.com/gisellevonbingen/Minecraft-GravitationalModulatingAdditionalUnit/tree/1.19.2)
+
 # License
 
 MIT and while 'Mekanism' allows
