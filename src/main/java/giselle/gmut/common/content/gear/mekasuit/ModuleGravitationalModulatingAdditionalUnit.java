@@ -58,8 +58,10 @@ public class ModuleGravitationalModulatingAdditionalUnit implements ICustomModul
 
 			}
 
-			if (player instanceof ClientPlayerEntity clientPlayer)
+			if (player instanceof ClientPlayerEntity)
 			{
+				ClientPlayerEntity clientPlayer = (ClientPlayerEntity) player;
+
 				if (clientPlayer.abilities.flying == true && Minecraft.getInstance().getCameraEntity() == clientPlayer)
 				{
 					float j = 0.0F;
