@@ -8,7 +8,10 @@ import mekanism.api.gear.IModule;
 import mekanism.api.gear.config.IModuleConfigItem;
 import mekanism.api.gear.config.ModuleBooleanData;
 import mekanism.api.gear.config.ModuleConfigItemCreator;
+import mekanism.api.gear.config.ModuleEnumData;
 import mekanism.common.CommonPlayerTickHandler;
+import net.minecraft.client.Minecraft;
+import net.minecraft.client.player.LocalPlayer;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.phys.Vec3;
 
@@ -18,6 +21,7 @@ public class ModuleGravitationalModulatingAdditionalUnit implements ICustomModul
 	private IModuleConfigItem<Boolean> flyAlways;
 	private IModuleConfigItem<Boolean> stopImmediately;
 	private IModuleConfigItem<Boolean> fixFOV;
+	private IModuleConfigItem<VerticalSpeed> verticalSpeed;
 
 	@Override
 	public void init(IModule<ModuleGravitationalModulatingAdditionalUnit> module, ModuleConfigItemCreator configItemCreator)
@@ -25,6 +29,7 @@ public class ModuleGravitationalModulatingAdditionalUnit implements ICustomModul
 		this.flyAlways = configItemCreator.createConfigItem("fly_always", GMUTLang.MODULE_FLY_ALWAYS, new ModuleBooleanData(false));
 		this.stopImmediately = configItemCreator.createConfigItem("stop_immediately", GMUTLang.MODULE_STOP_IMMEDIATELY, new ModuleBooleanData(true));
 		this.fixFOV = configItemCreator.createConfigItem("fix_fov", GMUTLang.MODULE_FIX_FOV, new ModuleBooleanData(false));
+		this.verticalSpeed = configItemCreator.createConfigItem("vertical_speed", GMUTLang.MODULE_VERTICAL_SPEED, new ModuleEnumData<>(VerticalSpeed.class, VerticalSpeed.OFF));
 	}
 
 	@Override
@@ -53,6 +58,33 @@ public class ModuleGravitationalModulatingAdditionalUnit implements ICustomModul
 
 			}
 
+			if (player instanceof LocalPlayer clientPlayer)
+			{
+				if (clientPlayer.getAbilities().flying == true && Minecraft.getInstance().getCameraEntity() == clientPlayer)
+				{
+					float j = 0.0F;
+
+					if (clientPlayer.input.shiftKeyDown == true)
+					{
+						j--;
+					}
+
+					if (clientPlayer.input.jumping == true)
+					{
+						j++;
+					}
+
+					if (j != 0)
+					{
+						j *= (this.getVerticalSpeed().get().getSpeed() - 1.0F);
+						Vec3 deltaMovement = clientPlayer.getDeltaMovement();
+						clientPlayer.setDeltaMovement(deltaMovement.add(0.0D, (double) ((float) j * clientPlayer.getAbilities().getFlyingSpeed() * 3.0F), 0.0D));
+					}
+
+				}
+
+			}
+
 		}
 
 	}
@@ -70,6 +102,11 @@ public class ModuleGravitationalModulatingAdditionalUnit implements ICustomModul
 	public IModuleConfigItem<Boolean> getFixFOV()
 	{
 		return this.fixFOV;
+	}
+
+	public IModuleConfigItem<VerticalSpeed> getVerticalSpeed()
+	{
+		return this.verticalSpeed;
 	}
 
 }
