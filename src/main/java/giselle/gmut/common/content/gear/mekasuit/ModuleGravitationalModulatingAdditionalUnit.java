@@ -9,8 +9,8 @@ import mekanism.api.gear.config.IModuleConfigItem;
 import mekanism.api.gear.config.ModuleBooleanData;
 import mekanism.api.gear.config.ModuleConfigItemCreator;
 import mekanism.common.CommonPlayerTickHandler;
-import net.minecraft.world.entity.player.Player;
-import net.minecraft.world.phys.Vec3;
+import net.minecraft.entity.player.PlayerEntity;
+import net.minecraft.util.math.vector.Vector3d;
 
 @ParametersAreNonnullByDefault
 public class ModuleGravitationalModulatingAdditionalUnit implements ICustomModule<ModuleGravitationalModulatingAdditionalUnit>
@@ -28,7 +28,7 @@ public class ModuleGravitationalModulatingAdditionalUnit implements ICustomModul
 	}
 
 	@Override
-	public void tickClient(IModule<ModuleGravitationalModulatingAdditionalUnit> module, Player player)
+	public void tickClient(IModule<ModuleGravitationalModulatingAdditionalUnit> module, PlayerEntity player)
 	{
 		boolean hasGravitationalModulator = CommonPlayerTickHandler.isGravitationalModulationReady(player);
 
@@ -38,16 +38,16 @@ public class ModuleGravitationalModulatingAdditionalUnit implements ICustomModul
 			{
 				if (player.isCrouching() == false)
 				{
-					player.getAbilities().flying = true;
+					player.abilities.flying = true;
 				}
 
 			}
 
 			if (this.stopImmediately.get() == true)
 			{
-				if (player.getAbilities().flying == true && player.zza == 0.0F && player.xxa == 0.0F)
+				if (player.abilities.flying == true && player.zza == 0.0F && player.xxa == 0.0F)
 				{
-					Vec3 deltaMovement = player.getDeltaMovement();
+					Vector3d deltaMovement = player.getDeltaMovement();
 					player.setDeltaMovement(deltaMovement.multiply(0.0D, 1.0D, 0.0D));
 				}
 

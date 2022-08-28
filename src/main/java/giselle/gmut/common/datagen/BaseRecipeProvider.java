@@ -3,9 +3,9 @@ package giselle.gmut.common.datagen;
 import java.util.function.Consumer;
 
 import net.minecraft.data.DataGenerator;
-import net.minecraft.data.recipes.FinishedRecipe;
-import net.minecraft.data.recipes.RecipeProvider;
-import net.minecraft.server.packs.PackType;
+import net.minecraft.data.IFinishedRecipe;
+import net.minecraft.data.RecipeProvider;
+import net.minecraft.resources.ResourcePackType;
 import net.minecraftforge.common.data.ExistingFileHelper;
 
 public abstract class BaseRecipeProvider extends RecipeProvider
@@ -21,13 +21,13 @@ public abstract class BaseRecipeProvider extends RecipeProvider
 	}
 
 	@Override
-	protected final void buildCraftingRecipes(Consumer<FinishedRecipe> consumer)
+	protected final void buildShapelessRecipes(Consumer<IFinishedRecipe> consumer)
 	{
-		Consumer<FinishedRecipe> trackingConsumer = consumer.andThen(recipe -> this.existingFileHelper.trackGenerated(recipe.getId(), PackType.SERVER_DATA, ".json", "recipes"));
+		Consumer<IFinishedRecipe> trackingConsumer = consumer.andThen(recipe -> this.existingFileHelper.trackGenerated(recipe.getId(), ResourcePackType.SERVER_DATA, ".json", "recipes"));
 		this.addRecipes(trackingConsumer);
 	}
 
-	protected abstract void addRecipes(Consumer<FinishedRecipe> consumer);
+	protected abstract void addRecipes(Consumer<IFinishedRecipe> consumer);
 
 	public ExistingFileHelper getExistingFileHelper()
 	{

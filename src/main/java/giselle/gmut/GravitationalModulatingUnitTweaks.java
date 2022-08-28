@@ -7,7 +7,7 @@ import giselle.gmut.common.registries.GMUTItems;
 import giselle.gmut.common.registries.GMUTModules;
 import mekanism.api.MekanismIMC;
 import mekanism.common.lib.Version;
-import net.minecraft.resources.ResourceLocation;
+import net.minecraft.util.ResourceLocation;
 import net.minecraftforge.eventbus.api.IEventBus;
 import net.minecraftforge.fml.ModLoadingContext;
 import net.minecraftforge.fml.common.Mod;

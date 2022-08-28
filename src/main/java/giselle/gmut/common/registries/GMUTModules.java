@@ -4,7 +4,7 @@ import giselle.gmut.GravitationalModulatingUnitTweaks;
 import giselle.gmut.common.content.gear.mekasuit.ModuleGravitationalModulatingAdditionalUnit;
 import mekanism.common.registration.impl.ModuleDeferredRegister;
 import mekanism.common.registration.impl.ModuleRegistryObject;
-import net.minecraft.world.item.Rarity;
+import net.minecraft.item.Rarity;
 
 public class GMUTModules
 {

@@ -11,9 +11,7 @@
       "conditions": {
         "items": [
           {
-            "items": [
-              "mekanism:module_gravitational_modulating_unit"
-            ]
+            "item": "mekanism:module_gravitational_modulating_unit"
           }
         ]
       }

@@ -2,7 +2,7 @@ package giselle.gmut.common;
 
 import giselle.gmut.GravitationalModulatingUnitTweaks;
 import mekanism.api.text.ILangEntry;
-import net.minecraft.Util;
+import net.minecraft.util.Util;
 
 public enum GMUTLang implements ILangEntry
 {

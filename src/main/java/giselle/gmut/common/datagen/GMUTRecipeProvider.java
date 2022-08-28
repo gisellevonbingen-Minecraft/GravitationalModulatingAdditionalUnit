@@ -7,8 +7,8 @@ import giselle.gmut.common.registries.GMUTItems;
 import mekanism.common.registries.MekanismItems;
 import mekanism.common.tags.MekanismTags;
 import net.minecraft.data.DataGenerator;
-import net.minecraft.data.recipes.FinishedRecipe;
-import net.minecraft.data.recipes.ShapedRecipeBuilder;
+import net.minecraft.data.IFinishedRecipe;
+import net.minecraft.data.ShapedRecipeBuilder;
 import net.minecraftforge.common.data.ExistingFileHelper;
 
 public class GMUTRecipeProvider extends BaseRecipeProvider
@@ -19,14 +19,14 @@ public class GMUTRecipeProvider extends BaseRecipeProvider
 	}
 
 	@Override
-	protected void addRecipes(Consumer<FinishedRecipe> consumer)
+	protected void addRecipes(Consumer<IFinishedRecipe> consumer)
 	{
 		ShapedRecipeBuilder.shaped(GMUTItems.GRAVITATIONAL_MODULATING_ADDITIONAL_UNIT).pattern("ACA").pattern("ABA").pattern("PPP")
 		.define('A', MekanismTags.Items.ALLOYS_REINFORCED)
 		.define('C', MekanismTags.Items.CIRCUITS_ULTIMATE)
 		.define('B', MekanismItems.MODULE_BASE)
 		.define('P', MekanismTags.Items.PELLETS_POLONIUM)
-		.unlockedBy(getHasName(MekanismItems.MODULE_GRAVITATIONAL_MODULATING), has(MekanismItems.MODULE_GRAVITATIONAL_MODULATING))
+		.unlockedBy("has_" + MekanismItems.MODULE_GRAVITATIONAL_MODULATING.getRegistryName().getPath(), has(MekanismItems.MODULE_GRAVITATIONAL_MODULATING))
 		.save(consumer);
 	}
 
