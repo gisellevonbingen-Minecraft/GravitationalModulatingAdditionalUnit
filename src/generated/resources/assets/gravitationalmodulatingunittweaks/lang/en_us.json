@@ -3,5 +3,6 @@
   "module.gravitationalmodulatingunittweaks.fix_fov": "Fix FOV",
   "module.gravitationalmodulatingunittweaks.fly_always": "Defy Gravity Always",
   "module.gravitationalmodulatingunittweaks.gravitational_modulating_additional_unit": "Gravitational Modulating Additional Unit",
-  "module.gravitationalmodulatingunittweaks.stop_immediately": "Stop Immediately"
+  "module.gravitationalmodulatingunittweaks.stop_immediately": "Stop Immediately",
+  "module.gravitationalmodulatingunittweaks.vertical_speed": "Vertical Speed Modifier"
 }
