@@ -23,6 +23,7 @@ public class GMUTLangProvider extends BaseLangProvider
 		this.add(GMUTLang.MODULE_FLY_ALWAYS, "Defy Gravity Always");
 		this.add(GMUTLang.MODULE_STOP_IMMEDIATELY, "Stop Immediately");
 		this.add(GMUTLang.MODULE_FIX_FOV, "Fix FOV");
+		this.add(GMUTLang.MODULE_VERTICAL_SPEED, "Vertical Speed Modifier");
 
 		this.add(GMUTModules.GRAVITATIONAL_MODULATING_ADDITIONAL_UNIT, "Gravitational Modulating Additional Unit", "Require 'Gravitational Modulating Unit', Provides additional features");
 	}
