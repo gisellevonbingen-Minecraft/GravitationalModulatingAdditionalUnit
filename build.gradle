@@ -98,7 +98,7 @@ repositories {
     }
     maven {
         name "CurseForge"
-        url = "https://www.cursemaven.com"
+        url "https://www.cursemaven.com"
     }
     maven {
         name "Local"
@@ -119,10 +119,10 @@ dependencies {
     implementation fg.deobf("curse.maven:jade-324717:${jade_file}")
 
     // Mekanism
-    implementation fg.deobf("mekanism:Mekanism:${mekanism_version}")
-    runtimeOnly fg.deobf("mekanism:Mekanism:${mekanism_version}:additions")
-    runtimeOnly fg.deobf("mekanism:Mekanism:${mekanism_version}:generators")
-    runtimeOnly fg.deobf("mekanism:Mekanism:${mekanism_version}:tools")
+    implementation fg.deobf("mekanism:Mekanism:${mc_version}-${mekanism_version}")
+    runtimeOnly fg.deobf("mekanism:Mekanism:${mc_version}-${mekanism_version}:additions")
+    runtimeOnly fg.deobf("mekanism:Mekanism:${mc_version}-${mekanism_version}:generators")
+    runtimeOnly fg.deobf("mekanism:Mekanism:${mc_version}-${mekanism_version}:tools")
 
 }
 
