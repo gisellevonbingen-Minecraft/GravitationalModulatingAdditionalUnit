@@ -33,6 +33,22 @@ public class ModuleGravitationalModulatingAdditionalUnit implements ICustomModul
 	}
 
 	@Override
+	public void tickServer(IModule<ModuleGravitationalModulatingAdditionalUnit> module, Player player)
+	{
+		boolean hasGravitationalModulator = CommonPlayerTickHandler.isGravitationalModulationReady(player);
+
+		if (hasGravitationalModulator == true)
+		{
+			if (this.flyAlways.get() == true)
+			{
+				player.getAbilities().flying = true;
+			}
+
+		}
+
+	}
+
+	@Override
 	public void tickClient(IModule<ModuleGravitationalModulatingAdditionalUnit> module, Player player)
 	{
 		boolean hasGravitationalModulator = CommonPlayerTickHandler.isGravitationalModulationReady(player);
