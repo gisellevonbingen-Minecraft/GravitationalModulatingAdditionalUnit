@@ -41,7 +41,11 @@ public class ModuleGravitationalModulatingAdditionalUnit implements ICustomModul
 		{
 			if (this.flyAlways.get() == true)
 			{
-				player.abilities.flying = true;
+				if (player.isShiftKeyDown() == false)
+				{
+					player.abilities.flying = true;
+				}
+
 			}
 
 		}
@@ -51,19 +55,12 @@ public class ModuleGravitationalModulatingAdditionalUnit implements ICustomModul
 	@Override
 	public void tickClient(IModule<ModuleGravitationalModulatingAdditionalUnit> module, PlayerEntity player)
 	{
+		this.tickServer(module, player);
+
 		boolean hasGravitationalModulator = CommonPlayerTickHandler.isGravitationalModulationReady(player);
 
 		if (hasGravitationalModulator == true)
 		{
-			if (this.flyAlways.get() == true)
-			{
-				if (player.isCrouching() == false)
-				{
-					player.abilities.flying = true;
-				}
-
-			}
-
 			if (this.stopImmediately.get() == true)
 			{
 				if (player.abilities.flying == true && player.zza == 0.0F && player.xxa == 0.0F)
