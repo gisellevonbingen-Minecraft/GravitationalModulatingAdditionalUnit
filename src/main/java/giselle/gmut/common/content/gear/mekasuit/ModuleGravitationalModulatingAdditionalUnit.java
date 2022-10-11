@@ -41,9 +41,10 @@ public class ModuleGravitationalModulatingAdditionalUnit implements ICustomModul
 		{
 			if (this.flyAlways.get() == true)
 			{
-				if (player.isShiftKeyDown() == false)
+				if (player.isShiftKeyDown() == false && player.abilities.flying == false)
 				{
 					player.abilities.flying = true;
+					player.onUpdateAbilities();
 				}
 
 			}
