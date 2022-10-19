@@ -1,0 +1,8 @@
+{
+  "description.gravitationalmodulatingunittweaks.gravitational_modulating_additional_unit": "'중력 조작 기구'에 부가 기능을 추가합니다.",
+  "module.gravitationalmodulatingunittweaks.fix_fov": "시야 범위 고정",
+  "module.gravitationalmodulatingunittweaks.fly_always": "항상 중력 조작",
+  "module.gravitationalmodulatingunittweaks.gravitational_modulating_additional_unit": "중력 조작 부가 기구",
+  "module.gravitationalmodulatingunittweaks.stop_immediately": "정지시 관성 무시",
+  "module.gravitationalmodulatingunittweaks.vertical_speed": "수직 이동 속도 배율"
+}
