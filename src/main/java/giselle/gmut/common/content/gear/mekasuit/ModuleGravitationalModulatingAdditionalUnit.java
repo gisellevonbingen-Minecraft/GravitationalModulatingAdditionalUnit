@@ -92,7 +92,7 @@ public class ModuleGravitationalModulatingAdditionalUnit implements ICustomModul
 					{
 						j *= (this.getVerticalSpeed().get().getSpeed() - 1.0F);
 						Vec3 deltaMovement = clientPlayer.getDeltaMovement();
-						clientPlayer.setDeltaMovement(deltaMovement.add(0.0D, (double) ((float) j * clientPlayer.getAbilities().getFlyingSpeed() * 3.0F), 0.0D));
+						clientPlayer.setDeltaMovement(deltaMovement.add(0.0D, j * clientPlayer.getAbilities().getFlyingSpeed() * 3.0F, 0.0D));
 					}
 
 				}
