@@ -1,0 +1,8 @@
+{
+  "description.gravitationalmodulatingunittweaks.gravitational_modulating_additional_unit": "为‘重力调制单元’，添加附加功能",
+  "module.gravitationalmodulatingunittweaks.fix_fov": "无视觉变形",
+  "module.gravitationalmodulatingunittweaks.fly_always": "始终无视重力",
+  "module.gravitationalmodulatingunittweaks.gravitational_modulating_additional_unit": "微重力操纵",
+  "module.gravitationalmodulatingunittweaks.stop_immediately": "无重力惯性",
+  "module.gravitationalmodulatingunittweaks.vertical_speed": "垂直速度修改"
+}
