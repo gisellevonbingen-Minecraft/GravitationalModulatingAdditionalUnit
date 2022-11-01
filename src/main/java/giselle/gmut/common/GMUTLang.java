@@ -6,8 +6,12 @@ import net.minecraft.Util;
 
 public enum GMUTLang implements ILangEntry
 {
+	// Constants
+	MOD_NAME("constants", "mod_name"),
+	KEY_CATAGORY("constants", "key_category"),
+
 	// Key
-	KEY_FLY_ALWAYS_MODE("key", "fly_always_mode"),
+	KEY_VERTICAL_SPEED("key", "vertical_speed"),
 
 	// Modules
 	MODULE_FLY_ALWAYS("module", "fly_always"),

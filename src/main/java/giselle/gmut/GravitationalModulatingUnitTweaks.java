@@ -3,6 +3,7 @@ package giselle.gmut;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
+import giselle.gmut.common.network.GMUTPacketHandler;
 import giselle.gmut.common.registries.GMUTItems;
 import giselle.gmut.common.registries.GMUTModules;
 import mekanism.api.MekanismIMC;
@@ -25,15 +26,22 @@ public class GravitationalModulatingUnitTweaks
 		return instance;
 	}
 
+	public static GMUTPacketHandler packetHandler()
+	{
+		return instance.packetHandler;
+	}
+
 	public static final String MODID = "gravitationalmodulatingunittweaks";
 	public static final Logger LOGGER = LogManager.getLogger();
 
 	public final Version version;
+	private final GMUTPacketHandler packetHandler;
 
 	public GravitationalModulatingUnitTweaks()
 	{
 		instance = this;
 		this.version = new Version(ModLoadingContext.get().getActiveContainer());
+		this.packetHandler = new GMUTPacketHandler();
 
 		this.registerFML();
 	}
@@ -51,6 +59,7 @@ public class GravitationalModulatingUnitTweaks
 	private void commonSetup(FMLCommonSetupEvent event)
 	{
 		LOGGER.info("Version {} initializing...", this.version);
+		packetHandler.initialize();
 	}
 
 	private void imcQueue(InterModEnqueueEvent event)
