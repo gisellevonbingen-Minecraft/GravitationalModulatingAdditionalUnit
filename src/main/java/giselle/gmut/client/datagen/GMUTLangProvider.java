@@ -20,6 +20,11 @@ public class GMUTLangProvider extends BaseLangProvider
 
 	private void addMisc()
 	{
+		this.add(GMUTLang.MOD_NAME, "Gravitational Modulating Additional Unit");
+		this.add(GMUTLang.KEY_CATAGORY, "Mekanism - Gravitational Modulating Additional Unit");
+
+		this.add(GMUTLang.KEY_VERTICAL_SPEED, "Vertical Speed Modifier Switch");
+
 		this.add(GMUTLang.MODULE_FLY_ALWAYS, "Defy Gravity Always");
 		this.add(GMUTLang.MODULE_STOP_IMMEDIATELY, "Stop Immediately");
 		this.add(GMUTLang.MODULE_FIX_FOV, "Fix FOV");
