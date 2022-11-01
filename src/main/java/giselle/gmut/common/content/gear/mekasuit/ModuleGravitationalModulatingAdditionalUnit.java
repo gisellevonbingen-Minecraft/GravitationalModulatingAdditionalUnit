@@ -13,6 +13,7 @@ import mekanism.common.CommonPlayerTickHandler;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.entity.player.ClientPlayerEntity;
 import net.minecraft.entity.player.PlayerEntity;
+import net.minecraft.item.ItemStack;
 import net.minecraft.util.math.vector.Vector3d;
 
 @ParametersAreNonnullByDefault
@@ -97,6 +98,29 @@ public class ModuleGravitationalModulatingAdditionalUnit implements ICustomModul
 						clientPlayer.setDeltaMovement(deltaMovement.add(0.0D, j * clientPlayer.abilities.getFlyingSpeed() * 3.0F, 0.0D));
 					}
 
+				}
+
+			}
+
+		}
+
+	}
+
+	@Override
+	public void changeMode(IModule<ModuleGravitationalModulatingAdditionalUnit> module, PlayerEntity player, ItemStack stack, int shift, boolean displayChangeMessage)
+	{
+		if (module.isEnabled() == true)
+		{
+			VerticalSpeed prevSpeed = this.getVerticalSpeed().get();
+			VerticalSpeed nextSpeed = prevSpeed.adjust(shift);
+
+			if (prevSpeed != nextSpeed)
+			{
+				this.getVerticalSpeed().set(nextSpeed);
+
+				if (displayChangeMessage == true)
+				{
+					module.displayModeChange(player, GMUTLang.MODULE_VERTICAL_SPEED.translate(), nextSpeed);
 				}
 
 			}
