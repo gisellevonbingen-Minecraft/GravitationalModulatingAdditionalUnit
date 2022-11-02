@@ -18,7 +18,7 @@ public class GMUTPacketHandler extends BasePacketHandler
 	@Override
 	public void initialize()
 	{
-		registerClientToServer(PacketSwitchVerticalSpeedPacket.class, PacketSwitchVerticalSpeedPacket::decode);
+		this.registerClientToServer(PacketSwitchVerticalSpeedPacket.class, PacketSwitchVerticalSpeedPacket::decode);
 	}
 
 }
