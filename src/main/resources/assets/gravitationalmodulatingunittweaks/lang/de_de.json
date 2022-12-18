@@ -1,11 +1,11 @@
 {
-    "constants.gravitationalmodulatingunittweaks.key_category": "Mekanism - Gravitations-Modulations-Zusatzeinheit",
-    "constants.gravitationalmodulatingunittweaks.mod_name": "Gravitations-Modulations-Zusatzeinheit",
-    "description.gravitationalmodulatingunittweaks.gravitational_modulating_additional_unit": "Benötigt die Gravitations-Modulations-Einheit. Bietet zusätzliche Funktionen.",
-    "key.gravitationalmodulatingunittweaks.vertical_speed": "Vertikale Geschwindigkeitsmodulation umschalten",
-    "module.gravitationalmodulatingunittweaks.fix_fov": "Sichtfeld korrigieren",
-    "module.gravitationalmodulatingunittweaks.fly_always": "Schwerkraft immer deaktivieren",
-    "module.gravitationalmodulatingunittweaks.gravitational_modulating_additional_unit": "Gravitations-Modulations-Zusatzeinheit",
-    "module.gravitationalmodulatingunittweaks.stop_immediately": "Sofort abbremsen",
-    "module.gravitationalmodulatingunittweaks.vertical_speed": "Vertikale Geschwindigkeit"
+  "constants.gravitationalmodulatingunittweaks.key_category": "Mekanism - Gravitations-Modulations-Zusatzeinheit",
+  "constants.gravitationalmodulatingunittweaks.mod_name": "Gravitations-Modulations-Zusatzeinheit",
+  "description.gravitationalmodulatingunittweaks.gravitational_modulating_additional_unit": "Benötigt die Gravitations-Modulations-Einheit. Bietet zusätzliche Funktionen.",
+  "key.gravitationalmodulatingunittweaks.vertical_speed": "Vertikale Geschwindigkeitsmodulation umschalten",
+  "module.gravitationalmodulatingunittweaks.fix_fov": "Sichtfeld korrigieren",
+  "module.gravitationalmodulatingunittweaks.fly_always": "Schwerkraft immer deaktivieren",
+  "module.gravitationalmodulatingunittweaks.gravitational_modulating_additional_unit": "Gravitations-Modulations-Zusatzeinheit",
+  "module.gravitationalmodulatingunittweaks.stop_immediately": "Sofort abbremsen",
+  "module.gravitationalmodulatingunittweaks.vertical_speed": "Vertikale Geschwindigkeit"
 }
