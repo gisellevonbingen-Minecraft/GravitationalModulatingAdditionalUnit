@@ -1,10 +1,18 @@
 # GravitationalModulatingAdditionalUnit
-Provide addtional features
 
-# License
+Available on [Curseforge](https://www.curseforge.com/minecraft/mc-mods/gravitational-modulating-additional-unit).
 
-MIT and while 'Mekanism' allows
+Provides additional features to [Mekanism](https://github.com/mekanism/Mekanism)'s Gravitational Modulating Unit, such as
 
-# Modpacks
+- instant braking,
+- vertical speed modulation,
+- FOV correction,
+- and a permanent gravity toggle.
 
-Can use in modpacks under license
+## License
+
+Licensed under MIT while Mekanism allows.
+
+## Modpacks
+
+Can be freely used in modpacks without permission according to the license.
