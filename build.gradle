@@ -1,26 +1,33 @@
 buildscript {
     repositories {
-        maven { url = "https://maven.minecraftforge.net" }
-        mavenCentral()
+        maven { url "https://maven.minecraftforge.net" }
+        maven { url "https://repo.spongepowered.org/maven" }
     }
     dependencies {
         classpath group: "net.minecraftforge.gradle", name: "ForgeGradle", version: "5.1.+", changing: true
+        classpath "org.spongepowered:mixingradle:0.7.+"
     }
 }
 
-apply plugin: "net.minecraftforge.gradle"
-apply plugin: "eclipse"
-apply plugin: "maven-publish"
+plugins {
+	id "java"
+	id "eclipse"
+	id "maven-publish"
+    id "net.minecraftforge.gradle" version "5.1.+"
+    id "org.parchmentmc.librarian.forgegradle" version "1.+"
+}
 
-version = "${mc_version}-${mod_version}"
-group = "giselle.gmut"
-archivesBaseName = "GravitationalModulatingAdditionalUnit"
+apply plugin: "org.spongepowered.mixin"
+
+archivesBaseName = rootProject.archives_base_name
+version = "${rootProject.mc_version}-${rootProject.mod_version}"
+group = rootProject.maven_group
 
 java.toolchain.languageVersion = JavaLanguageVersion.of(17)
-println "Java: ${System.getProperty "java.version"}, JVM: ${System.getProperty "java.vm.version"} (${System.getProperty "java.vendor"}), Arch: ${System.getProperty "os.arch"}"
+println("Java: " + System.getProperty("java.version") + " JVM: " + System.getProperty("java.vm.version") + "(" + System.getProperty("java.vendor") + ") Arch: " + System.getProperty("os.arch"))
 
 minecraft {
-    mappings channel: "official", version: "${mc_version}"
+    mappings channel: "parchment", version: "${parchment_version}-${mc_version}"
 
     // accessTransformer = file("src/main/resources/META-INF/accesstransformer.cfg")
 
@@ -30,11 +37,9 @@ minecraft {
 
             property "forge.logging.markers", "REGISTRIES"
             property "forge.logging.console.level", "debug"
-            property 'forge.enabledGameTestNamespaces', 'gravitationalmodulatingunittweaks'
-            // arg "-mixin.config=gmut.mixin.json"
-            
+
             mods {
-                gravitationalmodulatingunittweaks {
+                modClientRun {
                     source sourceSets.main
                 }
             }
@@ -45,25 +50,9 @@ minecraft {
 
             property "forge.logging.markers", "REGISTRIES"
             property "forge.logging.console.level", "debug"
-            property "forge.enabledGameTestNamespaces", "gravitationalmodulatingunittweaks"
-            // arg "-mixin.config=gravitationalmodulatingunittweaks.mixin.json"
 
             mods {
-                gravitationalmodulatingunittweaks {
-                    source sourceSets.main
-                }
-            }
-        }
-
-        gameTestServer {
-            workingDirectory project.file("run")
-
-            property "forge.logging.markers", "REGISTRIES"
-            property "forge.logging.console.level", "debug"
-            property "forge.enabledGameTestNamespaces", "gravitationalmodulatingunittweaks"
-
-            mods {
-                gravitationalmodulatingunittweaks {
+                modServerRun {
                     source sourceSets.main
                 }
             }
@@ -74,10 +63,10 @@ minecraft {
 
             property "forge.logging.markers", "REGISTRIES"
             property "forge.logging.console.level", "debug"
-            args "--mod", "gravitationalmodulatingunittweaks", "--all", "--output", file("src/generated/resources/"), "--existing", file("src/main/resources/")
+            args "--mod", "${mod_id}", "--all", "--output", file("src/generated/resources/"), "--existing", file("src/main/resources/")
 
             mods {
-                gravitationalmodulatingunittweaks {
+                modDataRun {
                     source sourceSets.main
                 }
             }
@@ -100,42 +89,69 @@ repositories {
         name "CurseForge"
         url "https://www.cursemaven.com"
     }
-    maven {
-        name "Local"
-        url uri("${projectDir}/libs")
-    }
 }
 
 dependencies {
-    minecraft "net.minecraftforge:forge:${mc_version}-${forge_version}"
+    // Mod
+    minecraft "net.minecraftforge:forge:${mc_version}-${forge_api_version}"
 
-    // JEI
-    implementation fg.deobf("mezz.jei:jei-${previous_minor_mc_version}-forge:${jei_version}")
-
-    // The One Probe
-    implementation fg.deobf("curse.maven:the-one-probe-245211:${top_file}")
-
-    // Jade
-    implementation fg.deobf("curse.maven:jade-324717:${jade_file}")
-
-    // Mekanism
+    // Implementation
     implementation fg.deobf("mekanism:Mekanism:${mc_version}-${mekanism_version}")
     runtimeOnly fg.deobf("mekanism:Mekanism:${mc_version}-${mekanism_version}:additions")
     runtimeOnly fg.deobf("mekanism:Mekanism:${mc_version}-${mekanism_version}:generators")
     runtimeOnly fg.deobf("mekanism:Mekanism:${mc_version}-${mekanism_version}:tools")
 
+    // Runtiem Only
+    implementation fg.deobf("mezz.jei:jei-${mc_version}-forge:${jei_version}")
+    implementation fg.deobf("curse.maven:the-one-probe-245211:${top_file}")
+    implementation fg.deobf("curse.maven:jade-324717:${jade_file}")
+}
+
+def resourceTargets = ["META-INF/mods.toml", "fabric.mod.json"]
+def intoTargets = ["$rootDir/out/production/resources/", "$rootDir/out/production/${project.name}.main/", "$rootDir/bin/main/"]
+def replaceProperties = [mc_version: mc_version,
+	mod_id: mod_id, mod_version: mod_version, mod_name: mod_name, mod_description: mod_description, mod_license: mod_license, mod_homepage: mod_homepage, mod_source: mod_source, mod_issues: mod_issues,
+	forge_api_version: forge_api_version, forge_loader_version: forge_loader_version,
+	mekanism_version: mekanism_version, mekanism_version_range: mekanism_version_range
+]
+
+processResources {
+	inputs.properties replaceProperties
+	replaceProperties.put "project", project
+
+	filesMatching(resourceTargets) {
+		expand replaceProperties
+	}
+
+	intoTargets.each { target ->
+		if (file(target).exists()) {
+			copy {
+				from(sourceSets.main.resources) {
+					include resourceTargets
+					expand replaceProperties
+				}
+				into target
+			}
+		}
+	}
+}
+
+tasks.withType(JavaCompile) {
+	options.encoding = "UTF-8"
+	options.release = 17
 }
 
 jar {
     manifest {
         attributes([
-                "Specification-Title"     : "gravitationalmodulatingunittweaks",
+                "Specification-Title"     : "${mod_id}",
                 "Specification-Vendor"    : "gisellevonbingen",
                 "Specification-Version"   : "1",
                 "Implementation-Title"    : project.name,
-                "Implementation-Version"  : project.jar.archiveVersion,
+                "Implementation-Version"  : "${mod_version}",
                 "Implementation-Vendor"   : "gisellevonbingen",
-                "Implementation-Timestamp": new Date().format("yyyy-MM-dd'T'HH:mm:ssZ")
+                "Implementation-Timestamp": new Date().format("yyyy-MM-dd'T'HH:mm:ssZ"),
+                "MixinConfigs" : "${mod_id}.mixin.common.json, ${mod_id}.mixin.client.json"
         ])
     }
 }
