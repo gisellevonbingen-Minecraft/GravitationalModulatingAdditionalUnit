@@ -8,10 +8,10 @@ import giselle.gmut.common.content.gear.mekasuit.EntityModuleHelper;
 import giselle.gmut.common.content.gear.mekasuit.ModuleGravitationalModulatingAdditionalUnit;
 import giselle.gmut.common.network.to_server.PacketSwitchVerticalSpeedPacket;
 import giselle.gmut.common.registries.GMUTModules;
+import mekanism.api.gear.IModule;
 import mekanism.client.ClientRegistrationUtil;
 import mekanism.client.key.MekKeyBindingBuilder;
 import mekanism.client.sound.SoundHandler;
-import mekanism.common.content.gear.Module;
 import mekanism.common.registries.MekanismSounds;
 import net.minecraft.client.KeyMapping;
 import net.minecraft.client.Minecraft;
@@ -34,7 +34,7 @@ public class GMUTKeyHandler
 
 		if (player != null)
 		{
-			Module<ModuleGravitationalModulatingAdditionalUnit> module = EntityModuleHelper.findArmorEnabledModule(player, GMUTModules.GRAVITATIONAL_MODULATING_ADDITIONAL_UNIT.get());
+			IModule<ModuleGravitationalModulatingAdditionalUnit> module = EntityModuleHelper.findArmorEnabledModule(player, GMUTModules.GRAVITATIONAL_MODULATING_ADDITIONAL_UNIT.get());
 
 			if (module != null)
 			{

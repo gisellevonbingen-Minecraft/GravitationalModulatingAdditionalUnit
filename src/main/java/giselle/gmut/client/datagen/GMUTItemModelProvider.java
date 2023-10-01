@@ -2,14 +2,14 @@ package giselle.gmut.client.datagen;
 
 import giselle.gmut.GravitationalModulatingUnitTweaks;
 import giselle.gmut.common.registries.GMUTItems;
-import net.minecraft.data.DataGenerator;
+import net.minecraft.data.PackOutput;
 import net.minecraftforge.common.data.ExistingFileHelper;
 
 public class GMUTItemModelProvider extends BaseItemModelProvider
 {
-	public GMUTItemModelProvider(DataGenerator generator, ExistingFileHelper existingFileHelper)
+	public GMUTItemModelProvider(PackOutput output, ExistingFileHelper existingFileHelper)
 	{
-		super(generator, GravitationalModulatingUnitTweaks.MODID, existingFileHelper);
+		super(output, GravitationalModulatingUnitTweaks.MODID, existingFileHelper);
 	}
 
 	@Override

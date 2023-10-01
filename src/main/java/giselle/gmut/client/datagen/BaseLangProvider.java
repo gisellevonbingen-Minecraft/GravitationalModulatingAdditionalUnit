@@ -3,16 +3,16 @@ package giselle.gmut.client.datagen;
 import mekanism.api.gear.ModuleData;
 import mekanism.api.providers.IModuleDataProvider;
 import mekanism.api.text.IHasTranslationKey;
-import net.minecraft.data.DataGenerator;
+import net.minecraft.data.PackOutput;
 import net.minecraftforge.common.data.LanguageProvider;
 
 public abstract class BaseLangProvider extends LanguageProvider
 {
 	private final String modid;
 
-	public BaseLangProvider(DataGenerator gen, String modid)
+	public BaseLangProvider(PackOutput output, String modid)
 	{
-		super(gen, modid, "en_us");
+		super(output, modid, "en_us");
 		this.modid = modid;
 	}
 

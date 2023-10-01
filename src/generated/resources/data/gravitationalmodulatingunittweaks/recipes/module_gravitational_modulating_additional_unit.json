@@ -1,5 +1,6 @@
 {
   "type": "minecraft:crafting_shaped",
+  "category": "misc",
   "key": {
     "A": {
       "tag": "mekanism:alloys/reinforced"
@@ -21,5 +22,6 @@
   ],
   "result": {
     "item": "gravitationalmodulatingunittweaks:module_gravitational_modulating_additional_unit"
-  }
+  },
+  "show_notification": true
 }

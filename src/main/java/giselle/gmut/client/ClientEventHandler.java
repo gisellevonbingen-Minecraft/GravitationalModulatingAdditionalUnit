@@ -3,8 +3,8 @@ package giselle.gmut.client;
 import giselle.gmut.GravitationalModulatingUnitTweaks;
 import giselle.gmut.common.content.gear.mekasuit.ModuleGravitationalModulatingAdditionalUnit;
 import giselle.gmut.common.registries.GMUTModules;
-import mekanism.api.MekanismAPI;
 import mekanism.api.gear.IModule;
+import mekanism.common.content.gear.ModuleHelper;
 import net.minecraft.client.Minecraft;
 import net.minecraft.world.entity.EquipmentSlot;
 import net.minecraft.world.entity.player.Player;
@@ -21,7 +21,7 @@ public class ClientEventHandler
 	{
 		Minecraft mc = Minecraft.getInstance();
 		Player player = mc.player;
-		IModule<ModuleGravitationalModulatingAdditionalUnit> module = MekanismAPI.getModuleHelper().load(player.getItemBySlot(EquipmentSlot.CHEST), GMUTModules.GRAVITATIONAL_MODULATING_ADDITIONAL_UNIT);
+		IModule<ModuleGravitationalModulatingAdditionalUnit> module = ModuleHelper.get().load(player.getItemBySlot(EquipmentSlot.CHEST), GMUTModules.GRAVITATIONAL_MODULATING_ADDITIONAL_UNIT);
 
 		if (module != null && module.isEnabled() == true)
 		{

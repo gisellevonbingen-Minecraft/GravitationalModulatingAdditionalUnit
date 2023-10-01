@@ -3,7 +3,7 @@ package giselle.gmut.client.datagen;
 import mekanism.api.providers.IItemProvider;
 import mekanism.common.item.ItemModule;
 import mekanism.common.registration.impl.ItemDeferredRegister;
-import net.minecraft.data.DataGenerator;
+import net.minecraft.data.PackOutput;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.item.Item;
 import net.minecraftforge.client.model.generators.ItemModelBuilder;
@@ -12,9 +12,9 @@ import net.minecraftforge.common.data.ExistingFileHelper;
 
 public abstract class BaseItemModelProvider extends ItemModelProvider
 {
-	public BaseItemModelProvider(DataGenerator generator, String modid, ExistingFileHelper existingFileHelper)
+	public BaseItemModelProvider(PackOutput output, String modid, ExistingFileHelper existingFileHelper)
 	{
-		super(generator, modid, existingFileHelper);
+		super(output, modid, existingFileHelper);
 	}
 
 	protected void registerModules(ItemDeferredRegister register)

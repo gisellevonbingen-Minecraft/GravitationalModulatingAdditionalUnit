@@ -3,13 +3,13 @@ package giselle.gmut.client.datagen;
 import giselle.gmut.GravitationalModulatingUnitTweaks;
 import giselle.gmut.common.GMUTLang;
 import giselle.gmut.common.registries.GMUTModules;
-import net.minecraft.data.DataGenerator;
+import net.minecraft.data.PackOutput;
 
 public class GMUTLangProvider extends BaseLangProvider
 {
-	public GMUTLangProvider(DataGenerator gen)
+	public GMUTLangProvider(PackOutput output)
 	{
-		super(gen, GravitationalModulatingUnitTweaks.MODID);
+		super(output, GravitationalModulatingUnitTweaks.MODID);
 	}
 
 	@Override

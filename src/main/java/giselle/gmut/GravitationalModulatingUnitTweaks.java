@@ -8,7 +8,9 @@ import giselle.gmut.common.registries.GMUTItems;
 import giselle.gmut.common.registries.GMUTModules;
 import mekanism.api.MekanismIMC;
 import mekanism.common.lib.Version;
+import mekanism.common.registries.MekanismCreativeTabs;
 import net.minecraft.resources.ResourceLocation;
+import net.minecraftforge.event.BuildCreativeModeTabContentsEvent;
 import net.minecraftforge.eventbus.api.IEventBus;
 import net.minecraftforge.fml.ModLoadingContext;
 import net.minecraftforge.fml.common.Mod;
@@ -51,6 +53,7 @@ public class GravitationalModulatingUnitTweaks
 		IEventBus fml_bus = FMLJavaModLoadingContext.get().getModEventBus();
 		fml_bus.addListener(this::commonSetup);
 		fml_bus.addListener(this::imcQueue);
+		fml_bus.addListener(this::buildCreativeModeTabContents);
 
 		GMUTItems.ITEMS.register(fml_bus);
 		GMUTModules.MODULES.register(fml_bus);
@@ -65,6 +68,15 @@ public class GravitationalModulatingUnitTweaks
 	private void imcQueue(InterModEnqueueEvent event)
 	{
 		MekanismIMC.addMekaSuitBodyarmorModules(GMUTModules.GRAVITATIONAL_MODULATING_ADDITIONAL_UNIT);
+	}
+
+	private void buildCreativeModeTabContents(BuildCreativeModeTabContentsEvent event)
+	{
+		if (event.getTab() == MekanismCreativeTabs.MEKANISM.get())
+		{
+			GMUTItems.ITEMS.getAllItems().stream().forEach(event::accept);
+		}
+
 	}
 
 	public static ResourceLocation rl(String path)

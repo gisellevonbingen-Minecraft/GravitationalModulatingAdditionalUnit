@@ -30,5 +30,6 @@
     "recipes": [
       "gravitationalmodulatingunittweaks:module_gravitational_modulating_additional_unit"
     ]
-  }
+  },
+  "sends_telemetry_event": false
 }
