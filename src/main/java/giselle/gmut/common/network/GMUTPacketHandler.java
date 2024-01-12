@@ -7,7 +7,7 @@ import net.minecraftforge.fml.network.simple.SimpleChannel;
 
 public class GMUTPacketHandler extends BasePacketHandler
 {
-	private static final SimpleChannel netHandler = createChannel(GravitationalModulatingUnitTweaks.rl(GravitationalModulatingUnitTweaks.MODID));
+	private static final SimpleChannel netHandler = createChannel(GravitationalModulatingUnitTweaks.rl("channel"));
 
 	@Override
 	protected SimpleChannel getChannel()
