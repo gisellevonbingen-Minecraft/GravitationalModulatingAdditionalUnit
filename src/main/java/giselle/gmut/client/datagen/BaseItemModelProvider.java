@@ -1,14 +1,14 @@
 package giselle.gmut.client.datagen;
 
-import mekanism.api.providers.IItemProvider;
 import mekanism.common.item.ItemModule;
 import mekanism.common.registration.impl.ItemDeferredRegister;
 import net.minecraft.data.PackOutput;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.item.Item;
-import net.minecraftforge.client.model.generators.ItemModelBuilder;
-import net.minecraftforge.client.model.generators.ItemModelProvider;
-import net.minecraftforge.common.data.ExistingFileHelper;
+import net.neoforged.neoforge.client.model.generators.ItemModelBuilder;
+import net.neoforged.neoforge.client.model.generators.ItemModelProvider;
+import net.neoforged.neoforge.common.data.ExistingFileHelper;
+import net.neoforged.neoforge.registries.DeferredHolder;
 
 public abstract class BaseItemModelProvider extends ItemModelProvider
 {
@@ -19,32 +19,32 @@ public abstract class BaseItemModelProvider extends ItemModelProvider
 
 	protected void registerModules(ItemDeferredRegister register)
 	{
-		for (IItemProvider itemProvider : register.getAllItems())
+		for (DeferredHolder<Item, ? extends Item> holder : register.getEntries())
 		{
-			Item item = itemProvider.asItem();
+			Item item = holder.get();
 
 			if (item instanceof ItemModule)
 			{
-				this.generated(itemProvider);
+				this.generated(holder);
 			}
 
 		}
 
 	}
 
-	protected ResourceLocation itemTexture(IItemProvider itemProvider)
+	protected ResourceLocation itemTexture(DeferredHolder<Item, ? extends Item> itemProvider)
 	{
-		return this.modLoc("item/" + itemProvider.getName());
+		return this.modLoc("item/" + itemProvider.getId().getPath());
 	}
 
-	protected ItemModelBuilder generated(IItemProvider itemProvider)
+	protected ItemModelBuilder generated(DeferredHolder<Item, ? extends Item> itemProvider)
 	{
 		return this.generated(itemProvider, this.itemTexture(itemProvider));
 	}
 
-	protected ItemModelBuilder generated(IItemProvider itemProvider, ResourceLocation texture)
+	protected ItemModelBuilder generated(DeferredHolder<Item, ? extends Item> itemProvider, ResourceLocation texture)
 	{
-		return this.withExistingParent(itemProvider.getName(), "item/generated").texture("layer0", texture);
+		return this.withExistingParent(itemProvider.getId().getPath(), "item/generated").texture("layer0", texture);
 	}
 
 }

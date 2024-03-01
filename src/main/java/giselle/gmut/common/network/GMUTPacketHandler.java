@@ -1,24 +1,27 @@
 package giselle.gmut.common.network;
 
-import giselle.gmut.GravitationalModulatingUnitTweaks;
 import giselle.gmut.common.network.to_server.PacketSwitchVerticalSpeedPacket;
+import mekanism.common.lib.Version;
 import mekanism.common.network.BasePacketHandler;
-import net.minecraftforge.network.simple.SimpleChannel;
+import net.neoforged.bus.api.IEventBus;
 
 public class GMUTPacketHandler extends BasePacketHandler
 {
-	private static final SimpleChannel netHandler = createChannel(GravitationalModulatingUnitTweaks.rl("channel"), GravitationalModulatingUnitTweaks.instance().version);
-
-	@Override
-	protected SimpleChannel getChannel()
+	public GMUTPacketHandler(IEventBus modEventBus, String modid, Version version)
 	{
-		return netHandler;
+		super(modEventBus, modid, version);
 	}
 
 	@Override
-	public void initialize()
+	protected void registerClientToServer(PacketRegistrar registrar)
 	{
-		this.registerClientToServer(PacketSwitchVerticalSpeedPacket.class, PacketSwitchVerticalSpeedPacket::decode);
+		registrar.play(PacketSwitchVerticalSpeedPacket.ID, PacketSwitchVerticalSpeedPacket::decode);
+	}
+
+	@Override
+	protected void registerServerToClient(PacketRegistrar registrar)
+	{
+
 	}
 
 }

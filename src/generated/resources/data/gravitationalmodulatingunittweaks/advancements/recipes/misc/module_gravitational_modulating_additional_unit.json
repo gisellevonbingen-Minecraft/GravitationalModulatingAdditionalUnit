@@ -22,14 +22,13 @@
   },
   "requirements": [
     [
-      "has_module_gravitational_modulating_unit",
-      "has_the_recipe"
+      "has_the_recipe",
+      "has_module_gravitational_modulating_unit"
     ]
   ],
   "rewards": {
     "recipes": [
       "gravitationalmodulatingunittweaks:module_gravitational_modulating_additional_unit"
     ]
-  },
-  "sends_telemetry_event": false
+  }
 }

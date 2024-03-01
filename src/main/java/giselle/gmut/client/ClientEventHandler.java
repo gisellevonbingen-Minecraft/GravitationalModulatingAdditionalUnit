@@ -8,10 +8,10 @@ import mekanism.common.content.gear.ModuleHelper;
 import net.minecraft.client.Minecraft;
 import net.minecraft.world.entity.EquipmentSlot;
 import net.minecraft.world.entity.player.Player;
-import net.minecraftforge.api.distmarker.Dist;
-import net.minecraftforge.client.event.ComputeFovModifierEvent;
-import net.minecraftforge.eventbus.api.SubscribeEvent;
-import net.minecraftforge.fml.common.Mod;
+import net.neoforged.api.distmarker.Dist;
+import net.neoforged.bus.api.SubscribeEvent;
+import net.neoforged.fml.common.Mod;
+import net.neoforged.neoforge.client.event.ComputeFovModifierEvent;
 
 @Mod.EventBusSubscriber(modid = GravitationalModulatingUnitTweaks.MODID, value = Dist.CLIENT, bus = Mod.EventBusSubscriber.Bus.FORGE)
 public class ClientEventHandler
@@ -23,11 +23,11 @@ public class ClientEventHandler
 		Player player = mc.player;
 		IModule<ModuleGravitationalModulatingAdditionalUnit> module = ModuleHelper.get().load(player.getItemBySlot(EquipmentSlot.CHEST), GMUTModules.GRAVITATIONAL_MODULATING_ADDITIONAL_UNIT);
 
-		if (module != null && module.isEnabled() == true)
+		if (module != null && module.isEnabled())
 		{
 			boolean fixFOV = module.getCustomInstance().getFixFOV().get();
 
-			if (fixFOV == true)
+			if (fixFOV)
 			{
 				e.setNewFovModifier(1.0F);
 			}

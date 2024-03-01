@@ -3,7 +3,7 @@ package giselle.gmut.client.datagen;
 import giselle.gmut.GravitationalModulatingUnitTweaks;
 import giselle.gmut.common.registries.GMUTItems;
 import net.minecraft.data.PackOutput;
-import net.minecraftforge.common.data.ExistingFileHelper;
+import net.neoforged.neoforge.common.data.ExistingFileHelper;
 
 public class GMUTItemModelProvider extends BaseItemModelProvider
 {

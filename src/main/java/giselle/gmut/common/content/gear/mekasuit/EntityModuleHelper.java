@@ -15,7 +15,7 @@ public class EntityModuleHelper
 		{
 			IModule<T> module = ModuleHelper.get().load(itemStack, type);
 
-			if (module != null && module.isEnabled() == true)
+			if (module != null && module.isEnabled())
 			{
 				return module;
 			}

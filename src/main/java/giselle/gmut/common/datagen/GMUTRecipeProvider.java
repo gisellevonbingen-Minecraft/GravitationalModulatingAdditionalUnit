@@ -1,26 +1,23 @@
 package giselle.gmut.common.datagen;
 
-import java.util.function.Consumer;
-
-import giselle.gmut.GravitationalModulatingUnitTweaks;
 import giselle.gmut.common.registries.GMUTItems;
 import mekanism.common.registries.MekanismItems;
 import mekanism.common.tags.MekanismTags;
 import net.minecraft.data.PackOutput;
-import net.minecraft.data.recipes.FinishedRecipe;
 import net.minecraft.data.recipes.RecipeCategory;
+import net.minecraft.data.recipes.RecipeOutput;
+import net.minecraft.data.recipes.RecipeProvider;
 import net.minecraft.data.recipes.ShapedRecipeBuilder;
-import net.minecraftforge.common.data.ExistingFileHelper;
 
-public class GMUTRecipeProvider extends BaseRecipeProvider
+public class GMUTRecipeProvider extends RecipeProvider
 {
-	public GMUTRecipeProvider(PackOutput output, ExistingFileHelper existingFileHelper)
+	public GMUTRecipeProvider(PackOutput output)
 	{
-		super(output, existingFileHelper, GravitationalModulatingUnitTweaks.MODID);
+		super(output);
 	}
 
 	@Override
-	protected void addRecipes(Consumer<FinishedRecipe> consumer)
+	protected void buildRecipes(RecipeOutput pRecipeOutput)
 	{
 		ShapedRecipeBuilder.shaped(RecipeCategory.MISC, GMUTItems.GRAVITATIONAL_MODULATING_ADDITIONAL_UNIT)//
 				.pattern("ACA").pattern("ABA").pattern("PPP")//
@@ -29,7 +26,7 @@ public class GMUTRecipeProvider extends BaseRecipeProvider
 				.define('B', MekanismItems.MODULE_BASE)//
 				.define('P', MekanismTags.Items.PELLETS_POLONIUM)//
 				.unlockedBy(getHasName(MekanismItems.MODULE_GRAVITATIONAL_MODULATING), has(MekanismItems.MODULE_GRAVITATIONAL_MODULATING))//
-				.save(consumer);
+				.save(pRecipeOutput);
 	}
 
 }

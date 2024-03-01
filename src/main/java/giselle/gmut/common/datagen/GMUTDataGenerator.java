@@ -5,11 +5,11 @@ import giselle.gmut.client.datagen.GMUTItemModelProvider;
 import giselle.gmut.client.datagen.GMUTLangProvider;
 import net.minecraft.data.DataGenerator;
 import net.minecraft.data.PackOutput;
-import net.minecraftforge.common.data.ExistingFileHelper;
-import net.minecraftforge.data.event.GatherDataEvent;
-import net.minecraftforge.eventbus.api.SubscribeEvent;
-import net.minecraftforge.fml.common.Mod.EventBusSubscriber;
-import net.minecraftforge.fml.common.Mod.EventBusSubscriber.Bus;
+import net.neoforged.bus.api.SubscribeEvent;
+import net.neoforged.fml.common.Mod.EventBusSubscriber;
+import net.neoforged.fml.common.Mod.EventBusSubscriber.Bus;
+import net.neoforged.neoforge.common.data.ExistingFileHelper;
+import net.neoforged.neoforge.data.event.GatherDataEvent;
 
 @EventBusSubscriber(modid = GravitationalModulatingUnitTweaks.MODID, bus = Bus.MOD)
 public class GMUTDataGenerator
@@ -24,7 +24,7 @@ public class GMUTDataGenerator
 		gen.addProvider(event.includeClient(), new GMUTLangProvider(output));
 		gen.addProvider(event.includeClient(), new GMUTItemModelProvider(output, existingFileHelper));
 
-		gen.addProvider(event.includeServer(), new GMUTRecipeProvider(output, existingFileHelper));
+		gen.addProvider(event.includeServer(), new GMUTRecipeProvider(output));
 	}
 
 	private GMUTDataGenerator()

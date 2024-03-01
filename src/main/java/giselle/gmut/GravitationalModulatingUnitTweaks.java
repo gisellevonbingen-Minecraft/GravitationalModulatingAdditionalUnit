@@ -10,13 +10,12 @@ import mekanism.api.MekanismIMC;
 import mekanism.common.lib.Version;
 import mekanism.common.registries.MekanismCreativeTabs;
 import net.minecraft.resources.ResourceLocation;
-import net.minecraftforge.event.BuildCreativeModeTabContentsEvent;
-import net.minecraftforge.eventbus.api.IEventBus;
-import net.minecraftforge.fml.ModLoadingContext;
-import net.minecraftforge.fml.common.Mod;
-import net.minecraftforge.fml.event.lifecycle.FMLCommonSetupEvent;
-import net.minecraftforge.fml.event.lifecycle.InterModEnqueueEvent;
-import net.minecraftforge.fml.javafmlmod.FMLJavaModLoadingContext;
+import net.neoforged.bus.api.IEventBus;
+import net.neoforged.fml.ModContainer;
+import net.neoforged.fml.ModLoadingContext;
+import net.neoforged.fml.common.Mod;
+import net.neoforged.fml.event.lifecycle.InterModEnqueueEvent;
+import net.neoforged.neoforge.event.BuildCreativeModeTabContentsEvent;
 
 @Mod(GravitationalModulatingUnitTweaks.MODID)
 public class GravitationalModulatingUnitTweaks
@@ -42,27 +41,23 @@ public class GravitationalModulatingUnitTweaks
 	public GravitationalModulatingUnitTweaks()
 	{
 		instance = this;
-		this.version = new Version(ModLoadingContext.get().getActiveContainer());
-		this.packetHandler = new GMUTPacketHandler();
+
+		ModContainer modContainer = ModLoadingContext.get().getActiveContainer();
+		IEventBus fml_bus = modContainer.getEventBus();
+		this.version = new Version(modContainer);
+		this.packetHandler = new GMUTPacketHandler(fml_bus, MODID, new Version(modContainer));
 
 		this.registerFML();
 	}
 
 	private void registerFML()
 	{
-		IEventBus fml_bus = FMLJavaModLoadingContext.get().getModEventBus();
-		fml_bus.addListener(this::commonSetup);
+		IEventBus fml_bus = ModLoadingContext.get().getActiveContainer().getEventBus();
 		fml_bus.addListener(this::imcQueue);
 		fml_bus.addListener(this::buildCreativeModeTabContents);
 
 		GMUTItems.ITEMS.register(fml_bus);
 		GMUTModules.MODULES.register(fml_bus);
-	}
-
-	private void commonSetup(FMLCommonSetupEvent event)
-	{
-		LOGGER.info("Version {} initializing...", this.version);
-		packetHandler.initialize();
 	}
 
 	private void imcQueue(InterModEnqueueEvent event)
@@ -74,7 +69,7 @@ public class GravitationalModulatingUnitTweaks
 	{
 		if (event.getTab() == MekanismCreativeTabs.MEKANISM.get())
 		{
-			GMUTItems.ITEMS.getAllItems().stream().forEach(event::accept);
+			GMUTItems.ITEMS.getEntries().stream().map(i -> i.get()).forEach(event::accept);
 		}
 
 	}

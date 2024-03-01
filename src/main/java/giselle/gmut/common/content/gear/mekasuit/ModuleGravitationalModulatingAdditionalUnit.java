@@ -38,11 +38,11 @@ public class ModuleGravitationalModulatingAdditionalUnit implements ICustomModul
 	{
 		boolean hasGravitationalModulator = CommonPlayerTickHandler.isGravitationalModulationReady(player);
 
-		if (hasGravitationalModulator == true)
+		if (hasGravitationalModulator)
 		{
-			if (this.flyAlways.get() == true)
+			if (this.flyAlways.get())
 			{
-				if (player.isShiftKeyDown() == false && player.getAbilities().flying == false)
+				if (!player.isShiftKeyDown() && !player.getAbilities().flying)
 				{
 					player.getAbilities().flying = true;
 					player.onUpdateAbilities();
@@ -61,11 +61,11 @@ public class ModuleGravitationalModulatingAdditionalUnit implements ICustomModul
 
 		boolean hasGravitationalModulator = CommonPlayerTickHandler.isGravitationalModulationReady(player);
 
-		if (hasGravitationalModulator == true)
+		if (hasGravitationalModulator)
 		{
-			if (this.stopImmediately.get() == true)
+			if (this.stopImmediately.get())
 			{
-				if (player.getAbilities().flying == true && player.zza == 0.0F && player.xxa == 0.0F)
+				if (player.getAbilities().flying && player.zza == 0.0F && player.xxa == 0.0F)
 				{
 					Vec3 deltaMovement = player.getDeltaMovement();
 					player.setDeltaMovement(deltaMovement.multiply(0.0D, 1.0D, 0.0D));
@@ -75,16 +75,16 @@ public class ModuleGravitationalModulatingAdditionalUnit implements ICustomModul
 
 			if (player instanceof LocalPlayer clientPlayer)
 			{
-				if (clientPlayer.getAbilities().flying == true && Minecraft.getInstance().getCameraEntity() == clientPlayer)
+				if (clientPlayer.getAbilities().flying && Minecraft.getInstance().getCameraEntity() == clientPlayer)
 				{
 					float j = 0.0F;
 
-					if (clientPlayer.input.shiftKeyDown == true)
+					if (clientPlayer.input.shiftKeyDown)
 					{
 						j--;
 					}
 
-					if (clientPlayer.input.jumping == true)
+					if (clientPlayer.input.jumping)
 					{
 						j++;
 					}
@@ -107,7 +107,7 @@ public class ModuleGravitationalModulatingAdditionalUnit implements ICustomModul
 	@Override
 	public void changeMode(IModule<ModuleGravitationalModulatingAdditionalUnit> module, Player player, ItemStack stack, int shift, boolean displayChangeMessage)
 	{
-		if (module.isEnabled() == true)
+		if (module.isEnabled())
 		{
 			VerticalSpeed prevSpeed = this.getVerticalSpeed().get();
 			VerticalSpeed nextSpeed = prevSpeed.adjust(shift);
@@ -116,7 +116,7 @@ public class ModuleGravitationalModulatingAdditionalUnit implements ICustomModul
 			{
 				this.getVerticalSpeed().set(nextSpeed);
 
-				if (displayChangeMessage == true)
+				if (displayChangeMessage)
 				{
 					module.displayModeChange(player, GMUTLang.MODULE_VERTICAL_SPEED.translate(), nextSpeed);
 				}
