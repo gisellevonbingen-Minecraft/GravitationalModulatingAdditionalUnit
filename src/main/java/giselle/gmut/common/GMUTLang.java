@@ -14,6 +14,7 @@ public enum GMUTLang implements ILangEntry
 	KEY_VERTICAL_SPEED("key", "vertical_speed"),
 
 	// Modules
+	MODULE_ENABLED("module", "enabled"),
 	MODULE_FLY_ALWAYS("module", "fly_always"),
 	MODULE_STOP_IMMEDIATELY("module", "stop_immediately"),
 	MODULE_FIX_FOV("module", "fix_fov"),

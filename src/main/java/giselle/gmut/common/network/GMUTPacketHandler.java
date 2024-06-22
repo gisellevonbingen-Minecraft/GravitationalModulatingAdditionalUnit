@@ -7,15 +7,15 @@ import net.neoforged.bus.api.IEventBus;
 
 public class GMUTPacketHandler extends BasePacketHandler
 {
-	public GMUTPacketHandler(IEventBus modEventBus, String modid, Version version)
+	public GMUTPacketHandler(IEventBus modEventBus, Version version)
 	{
-		super(modEventBus, modid, version);
+		super(modEventBus, version);
 	}
 
 	@Override
 	protected void registerClientToServer(PacketRegistrar registrar)
 	{
-		registrar.play(PacketSwitchVerticalSpeedPacket.ID, PacketSwitchVerticalSpeedPacket::decode);
+		registrar.play(PacketSwitchVerticalSpeedPacket.TYPE, PacketSwitchVerticalSpeedPacket.STREAM_CODEC);
 	}
 
 	@Override

@@ -15,6 +15,8 @@ import mekanism.common.network.PacketUtils;
 import mekanism.common.registries.MekanismSounds;
 import net.minecraft.client.KeyMapping;
 import net.minecraft.client.Minecraft;
+import net.minecraft.util.Tuple;
+import net.minecraft.world.entity.EquipmentSlot;
 import net.minecraft.world.entity.player.Player;
 import net.neoforged.neoforge.client.event.RegisterKeyMappingsEvent;
 
@@ -34,9 +36,9 @@ public class GMUTKeyHandler
 
 		if (player != null)
 		{
-			IModule<ModuleGravitationalModulatingAdditionalUnit> module = EntityModuleHelper.findArmorEnabledModule(player, GMUTModules.GRAVITATIONAL_MODULATING_ADDITIONAL_UNIT.get());
+			Tuple<EquipmentSlot, IModule<ModuleGravitationalModulatingAdditionalUnit>> pair = EntityModuleHelper.findArmorEnabledModule(player, GMUTModules.GRAVITATIONAL_MODULATING_ADDITIONAL_UNIT.get());
 
-			if (module != null)
+			if (pair != null)
 			{
 				PacketUtils.sendToServer(new PacketSwitchVerticalSpeedPacket(player.isShiftKeyDown() ? -1 : +1));
 				SoundHandler.playSound(MekanismSounds.HYDRAULIC);

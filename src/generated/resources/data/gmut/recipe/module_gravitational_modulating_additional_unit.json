@@ -9,10 +9,10 @@
       "item": "mekanism:module_base"
     },
     "C": {
-      "tag": "forge:circuits/ultimate"
+      "tag": "c:circuits/ultimate"
     },
     "P": {
-      "tag": "forge:pellets/polonium"
+      "tag": "c:pellets/polonium"
     }
   },
   "pattern": [
@@ -21,6 +21,7 @@
     "PPP"
   ],
   "result": {
-    "item": "gravitationalmodulatingunittweaks:module_gravitational_modulating_additional_unit"
+    "count": 1,
+    "id": "gmut:module_gravitational_modulating_additional_unit"
   }
 }

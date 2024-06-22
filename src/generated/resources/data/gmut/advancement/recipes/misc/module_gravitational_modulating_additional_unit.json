@@ -5,9 +5,7 @@
       "conditions": {
         "items": [
           {
-            "items": [
-              "mekanism:module_gravitational_modulating_unit"
-            ]
+            "items": "mekanism:module_gravitational_modulating_unit"
           }
         ]
       },
@@ -15,7 +13,7 @@
     },
     "has_the_recipe": {
       "conditions": {
-        "recipe": "gravitationalmodulatingunittweaks:module_gravitational_modulating_additional_unit"
+        "recipe": "gmut:module_gravitational_modulating_additional_unit"
       },
       "trigger": "minecraft:recipe_unlocked"
     }
@@ -28,7 +26,7 @@
   ],
   "rewards": {
     "recipes": [
-      "gravitationalmodulatingunittweaks:module_gravitational_modulating_additional_unit"
+      "gmut:module_gravitational_modulating_additional_unit"
     ]
   }
 }

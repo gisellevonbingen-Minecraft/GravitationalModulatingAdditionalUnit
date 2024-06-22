@@ -32,7 +32,7 @@ public class GravitationalModulatingUnitTweaks
 		return instance.packetHandler;
 	}
 
-	public static final String MODID = "gravitationalmodulatingunittweaks";
+	public static final String MODID = "gmut";
 	public static final Logger LOGGER = LogManager.getLogger();
 
 	public final Version version;
@@ -45,7 +45,7 @@ public class GravitationalModulatingUnitTweaks
 		ModContainer modContainer = ModLoadingContext.get().getActiveContainer();
 		IEventBus fml_bus = modContainer.getEventBus();
 		this.version = new Version(modContainer);
-		this.packetHandler = new GMUTPacketHandler(fml_bus, MODID, new Version(modContainer));
+		this.packetHandler = new GMUTPacketHandler(fml_bus, new Version(modContainer));
 
 		this.registerFML();
 	}
@@ -76,7 +76,7 @@ public class GravitationalModulatingUnitTweaks
 
 	public static ResourceLocation rl(String path)
 	{
-		return new ResourceLocation(MODID, path);
+		return ResourceLocation.fromNamespaceAndPath(MODID, path);
 	}
 
 }

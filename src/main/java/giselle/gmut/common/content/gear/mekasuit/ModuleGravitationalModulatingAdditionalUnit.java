@@ -2,16 +2,15 @@ package giselle.gmut.common.content.gear.mekasuit;
 
 import javax.annotation.ParametersAreNonnullByDefault;
 
+import giselle.gmut.GravitationalModulatingUnitTweaks;
 import giselle.gmut.common.GMUTLang;
 import mekanism.api.gear.ICustomModule;
 import mekanism.api.gear.IModule;
-import mekanism.api.gear.config.IModuleConfigItem;
-import mekanism.api.gear.config.ModuleBooleanData;
-import mekanism.api.gear.config.ModuleConfigItemCreator;
-import mekanism.api.gear.config.ModuleEnumData;
+import mekanism.api.gear.IModuleContainer;
 import mekanism.common.CommonPlayerTickHandler;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.player.LocalPlayer;
+import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.phys.Vec3;
@@ -19,28 +18,32 @@ import net.minecraft.world.phys.Vec3;
 @ParametersAreNonnullByDefault
 public class ModuleGravitationalModulatingAdditionalUnit implements ICustomModule<ModuleGravitationalModulatingAdditionalUnit>
 {
-	private IModuleConfigItem<Boolean> flyAlways;
-	private IModuleConfigItem<Boolean> stopImmediately;
-	private IModuleConfigItem<Boolean> fixFOV;
-	private IModuleConfigItem<VerticalSpeed> verticalSpeed;
+	public static final ResourceLocation FLY_ALWAYS = GravitationalModulatingUnitTweaks.rl("fly_always");
+	public static final ResourceLocation STOP_IMMEDIATELY = GravitationalModulatingUnitTweaks.rl("stop_immediately");
+	public static final ResourceLocation FIX_FOV = GravitationalModulatingUnitTweaks.rl("fix_fov");
+	public static final ResourceLocation VERTICAL_SPEED = GravitationalModulatingUnitTweaks.rl("vertical_speed");
 
-	@Override
-	public void init(IModule<ModuleGravitationalModulatingAdditionalUnit> module, ModuleConfigItemCreator configItemCreator)
+	private boolean flyAlways;
+	private boolean stopImmediately;
+	private boolean fixFOV;
+	private VerticalSpeed verticalSpeed;
+
+	public ModuleGravitationalModulatingAdditionalUnit(IModule<ModuleGravitationalModulatingAdditionalUnit> module)
 	{
-		this.flyAlways = configItemCreator.createConfigItem("fly_always", GMUTLang.MODULE_FLY_ALWAYS, new ModuleBooleanData(false));
-		this.stopImmediately = configItemCreator.createConfigItem("stop_immediately", GMUTLang.MODULE_STOP_IMMEDIATELY, new ModuleBooleanData(true));
-		this.fixFOV = configItemCreator.createConfigItem("fix_fov", GMUTLang.MODULE_FIX_FOV, new ModuleBooleanData(false));
-		this.verticalSpeed = configItemCreator.createConfigItem("vertical_speed", GMUTLang.MODULE_VERTICAL_SPEED, new ModuleEnumData<>(VerticalSpeed.OFF));
+		this.flyAlways = module.getBooleanConfigOrFalse(FLY_ALWAYS);
+		this.stopImmediately = module.getBooleanConfigOrFalse(STOP_IMMEDIATELY);
+		this.fixFOV = module.getBooleanConfigOrFalse(FIX_FOV);
+		this.verticalSpeed = module.<VerticalSpeed> getConfigOrThrow(VERTICAL_SPEED).get();
 	}
 
 	@Override
-	public void tickServer(IModule<ModuleGravitationalModulatingAdditionalUnit> module, Player player)
+	public void tickServer(IModule<ModuleGravitationalModulatingAdditionalUnit> module, IModuleContainer moduleContainer, ItemStack stack, Player player)
 	{
-		boolean hasGravitationalModulator = CommonPlayerTickHandler.isGravitationalModulationReady(player);
+		boolean hasGravitationalModulator = CommonPlayerTickHandler.isGravitationalModulationReady(stack);
 
 		if (hasGravitationalModulator)
 		{
-			if (this.flyAlways.get())
+			if (this.flyAlways)
 			{
 				if (!player.isShiftKeyDown() && !player.getAbilities().flying)
 				{
@@ -55,15 +58,23 @@ public class ModuleGravitationalModulatingAdditionalUnit implements ICustomModul
 	}
 
 	@Override
-	public void tickClient(IModule<ModuleGravitationalModulatingAdditionalUnit> module, Player player)
+	public void tickClient(IModule<ModuleGravitationalModulatingAdditionalUnit> module, IModuleContainer moduleContainer, ItemStack stack, Player player)
 	{
-		this.tickServer(module, player);
-
-		boolean hasGravitationalModulator = CommonPlayerTickHandler.isGravitationalModulationReady(player);
+		boolean hasGravitationalModulator = CommonPlayerTickHandler.isGravitationalModulationReady(stack);
 
 		if (hasGravitationalModulator)
 		{
-			if (this.stopImmediately.get())
+			if (this.flyAlways)
+			{
+				if (!player.isShiftKeyDown() && !player.getAbilities().flying)
+				{
+					player.getAbilities().flying = true;
+					player.onUpdateAbilities();
+				}
+
+			}
+
+			if (this.stopImmediately)
 			{
 				if (player.getAbilities().flying && player.zza == 0.0F && player.xxa == 0.0F)
 				{
@@ -91,7 +102,7 @@ public class ModuleGravitationalModulatingAdditionalUnit implements ICustomModul
 
 					if (j != 0)
 					{
-						j *= (this.getVerticalSpeed().get().getSpeed() - 1.0F);
+						j *= (this.getVerticalSpeed().getSpeed() - 1.0F);
 						Vec3 deltaMovement = clientPlayer.getDeltaMovement();
 						clientPlayer.setDeltaMovement(deltaMovement.add(0.0D, j * clientPlayer.getAbilities().getFlyingSpeed() * 3.0F, 0.0D));
 					}
@@ -105,16 +116,16 @@ public class ModuleGravitationalModulatingAdditionalUnit implements ICustomModul
 	}
 
 	@Override
-	public void changeMode(IModule<ModuleGravitationalModulatingAdditionalUnit> module, Player player, ItemStack stack, int shift, boolean displayChangeMessage)
+	public void changeMode(IModule<ModuleGravitationalModulatingAdditionalUnit> module, Player player, IModuleContainer moduleContainer, ItemStack stack, int shift, boolean displayChangeMessage)
 	{
 		if (module.isEnabled())
 		{
-			VerticalSpeed prevSpeed = this.getVerticalSpeed().get();
+			VerticalSpeed prevSpeed = this.getVerticalSpeed();
 			VerticalSpeed nextSpeed = prevSpeed.adjust(shift);
 
 			if (prevSpeed != nextSpeed)
 			{
-				this.getVerticalSpeed().set(nextSpeed);
+				moduleContainer.replaceModuleConfig(player.level().registryAccess(), stack, module.getData(), module.<VerticalSpeed> getConfigOrThrow(VERTICAL_SPEED).with(nextSpeed));
 
 				if (displayChangeMessage)
 				{
@@ -127,22 +138,22 @@ public class ModuleGravitationalModulatingAdditionalUnit implements ICustomModul
 
 	}
 
-	public IModuleConfigItem<Boolean> getFlyAlways()
+	public boolean getFlyAlways()
 	{
 		return this.flyAlways;
 	}
 
-	public IModuleConfigItem<Boolean> getStopImmediately()
+	public boolean getStopImmediately()
 	{
 		return this.stopImmediately;
 	}
 
-	public IModuleConfigItem<Boolean> getFixFOV()
+	public boolean getFixFOV()
 	{
 		return this.fixFOV;
 	}
 
-	public IModuleConfigItem<VerticalSpeed> getVerticalSpeed()
+	public VerticalSpeed getVerticalSpeed()
 	{
 		return this.verticalSpeed;
 	}

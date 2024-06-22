@@ -1,8 +1,11 @@
 package giselle.gmut.common.datagen;
 
+import java.util.concurrent.CompletableFuture;
+
 import giselle.gmut.common.registries.GMUTItems;
 import mekanism.common.registries.MekanismItems;
 import mekanism.common.tags.MekanismTags;
+import net.minecraft.core.HolderLookup;
 import net.minecraft.data.PackOutput;
 import net.minecraft.data.recipes.RecipeCategory;
 import net.minecraft.data.recipes.RecipeOutput;
@@ -11,9 +14,9 @@ import net.minecraft.data.recipes.ShapedRecipeBuilder;
 
 public class GMUTRecipeProvider extends RecipeProvider
 {
-	public GMUTRecipeProvider(PackOutput output)
+	public GMUTRecipeProvider(PackOutput output, CompletableFuture<HolderLookup.Provider> registries)
 	{
-		super(output);
+		super(output, registries);
 	}
 
 	@Override
