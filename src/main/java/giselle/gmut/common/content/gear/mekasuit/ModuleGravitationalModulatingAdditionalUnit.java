@@ -39,7 +39,7 @@ public class ModuleGravitationalModulatingAdditionalUnit implements ICustomModul
 	@Override
 	public void tickServer(IModule<ModuleGravitationalModulatingAdditionalUnit> module, IModuleContainer moduleContainer, ItemStack stack, Player player)
 	{
-		boolean hasGravitationalModulator = CommonPlayerTickHandler.isGravitationalModulationReady(stack);
+		boolean hasGravitationalModulator = CommonPlayerTickHandler.isGravitationalModulationOn(player);
 
 		if (hasGravitationalModulator)
 		{
@@ -60,7 +60,7 @@ public class ModuleGravitationalModulatingAdditionalUnit implements ICustomModul
 	@Override
 	public void tickClient(IModule<ModuleGravitationalModulatingAdditionalUnit> module, IModuleContainer moduleContainer, ItemStack stack, Player player)
 	{
-		boolean hasGravitationalModulator = CommonPlayerTickHandler.isGravitationalModulationReady(stack);
+		boolean hasGravitationalModulator = CommonPlayerTickHandler.isGravitationalModulationOn(player);
 
 		if (hasGravitationalModulator)
 		{
