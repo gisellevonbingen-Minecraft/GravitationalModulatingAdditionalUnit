@@ -3,11 +3,11 @@ package giselle.gmut.common.content.gear.mekasuit;
 import javax.annotation.ParametersAreNonnullByDefault;
 
 import giselle.gmut.GravitationalModulatingUnitTweaks;
+import giselle.gmut.common.GMUTCommonPlayerTickHandler;
 import giselle.gmut.common.GMUTLang;
 import mekanism.api.gear.ICustomModule;
 import mekanism.api.gear.IModule;
 import mekanism.api.gear.IModuleContainer;
-import mekanism.common.CommonPlayerTickHandler;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.player.LocalPlayer;
 import net.minecraft.resources.ResourceLocation;
@@ -39,7 +39,7 @@ public class ModuleGravitationalModulatingAdditionalUnit implements ICustomModul
 	@Override
 	public void tickServer(IModule<ModuleGravitationalModulatingAdditionalUnit> module, IModuleContainer moduleContainer, ItemStack stack, Player player)
 	{
-		boolean hasGravitationalModulator = CommonPlayerTickHandler.isGravitationalModulationOn(player);
+		boolean hasGravitationalModulator = GMUTCommonPlayerTickHandler.isGravitationalModulationReady(stack);
 
 		if (hasGravitationalModulator)
 		{
@@ -49,6 +49,7 @@ public class ModuleGravitationalModulatingAdditionalUnit implements ICustomModul
 				{
 					player.getAbilities().flying = true;
 					player.onUpdateAbilities();
+					System.out.println("SERVER");
 				}
 
 			}
@@ -60,7 +61,7 @@ public class ModuleGravitationalModulatingAdditionalUnit implements ICustomModul
 	@Override
 	public void tickClient(IModule<ModuleGravitationalModulatingAdditionalUnit> module, IModuleContainer moduleContainer, ItemStack stack, Player player)
 	{
-		boolean hasGravitationalModulator = CommonPlayerTickHandler.isGravitationalModulationOn(player);
+		boolean hasGravitationalModulator = GMUTCommonPlayerTickHandler.isGravitationalModulationReady(stack);
 
 		if (hasGravitationalModulator)
 		{
@@ -70,6 +71,7 @@ public class ModuleGravitationalModulatingAdditionalUnit implements ICustomModul
 				{
 					player.getAbilities().flying = true;
 					player.onUpdateAbilities();
+					System.out.println("CLIENT");
 				}
 
 			}
