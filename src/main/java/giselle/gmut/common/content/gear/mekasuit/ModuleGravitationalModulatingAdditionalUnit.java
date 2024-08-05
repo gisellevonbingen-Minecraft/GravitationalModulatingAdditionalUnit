@@ -49,7 +49,6 @@ public class ModuleGravitationalModulatingAdditionalUnit implements ICustomModul
 				{
 					player.getAbilities().flying = true;
 					player.onUpdateAbilities();
-					System.out.println("SERVER");
 				}
 
 			}
@@ -71,7 +70,6 @@ public class ModuleGravitationalModulatingAdditionalUnit implements ICustomModul
 				{
 					player.getAbilities().flying = true;
 					player.onUpdateAbilities();
-					System.out.println("CLIENT");
 				}
 
 			}
