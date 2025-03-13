@@ -5,6 +5,7 @@ import javax.annotation.ParametersAreNonnullByDefault;
 import giselle.gmut.GravitationalModulatingUnitTweaks;
 import giselle.gmut.common.GMUTCommonPlayerTickHandler;
 import giselle.gmut.common.GMUTLang;
+import giselle.gmut.common.registries.GMUTModules;
 import mekanism.api.gear.ICustomModule;
 import mekanism.api.gear.IModule;
 import mekanism.api.gear.IModuleContainer;
@@ -125,7 +126,7 @@ public class ModuleGravitationalModulatingAdditionalUnit implements ICustomModul
 
 			if (prevSpeed != nextSpeed)
 			{
-				moduleContainer.replaceModuleConfig(player.level().registryAccess(), stack, module.getData(), module.<VerticalSpeed> getConfigOrThrow(VERTICAL_SPEED).with(nextSpeed));
+				moduleContainer.replaceModuleConfig(player.level().registryAccess(), stack, GMUTModules.GRAVITATIONAL_MODULATING_ADDITIONAL_UNIT, module.<VerticalSpeed> getConfigOrThrow(VERTICAL_SPEED).with(nextSpeed));
 
 				if (displayChangeMessage)
 				{

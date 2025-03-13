@@ -9,13 +9,13 @@ public class GMUTCommonPlayerTickHandler
 {
 	public static boolean isGravitationalModulationReady(ItemStack stack)
 	{
-        var module = IModuleHelper.INSTANCE.getIfEnabled(stack, MekanismModules.GRAVITATIONAL_MODULATING_UNIT);
-        return module != null && module.hasEnoughEnergy(stack, MekanismConfig.gear.mekaSuitEnergyUsageGravitationalModulation);
+		var module = IModuleHelper.INSTANCE.getIfEnabled(stack, MekanismModules.GRAVITATIONAL_MODULATING_UNIT);
+		return module != null && module.hasEnoughEnergy(stack, MekanismConfig.gear.mekaSuitEnergyUsageGravitationalModulation);
 	}
-	
+
 	private GMUTCommonPlayerTickHandler()
 	{
-		
+
 	}
-	
+
 }

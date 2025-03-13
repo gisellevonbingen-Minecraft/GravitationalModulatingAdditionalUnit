@@ -1,10 +1,11 @@
 package giselle.gmut.client.datagen;
 
+import mekanism.api.gear.ICustomModule;
 import mekanism.api.gear.ModuleData;
-import mekanism.api.providers.IModuleDataProvider;
 import mekanism.api.text.IHasTranslationKey;
 import net.minecraft.data.PackOutput;
 import net.neoforged.neoforge.common.data.LanguageProvider;
+import net.neoforged.neoforge.registries.DeferredHolder;
 
 public abstract class BaseLangProvider extends LanguageProvider
 {
@@ -21,9 +22,9 @@ public abstract class BaseLangProvider extends LanguageProvider
 		this.add(key.getTranslationKey(), value);
 	}
 
-	protected void add(IModuleDataProvider<?> moduleDataProvider, String name, String description)
+	protected <MODULE extends ICustomModule<MODULE>> void add(DeferredHolder<ModuleData<?>, ModuleData<MODULE>> moduleDataProvider, String name, String description)
 	{
-		ModuleData<?> moduleData = moduleDataProvider.getModuleData();
+		ModuleData<MODULE> moduleData = moduleDataProvider.get();
 		this.add(moduleData.getTranslationKey(), name);
 		this.add(moduleData.getDescriptionTranslationKey(), description);
 	}

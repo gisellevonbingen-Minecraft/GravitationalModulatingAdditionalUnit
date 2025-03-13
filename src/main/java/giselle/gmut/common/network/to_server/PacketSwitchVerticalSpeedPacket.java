@@ -29,7 +29,7 @@ public record PacketSwitchVerticalSpeedPacket(int shift) implements IMekanismPac
 	public void handle(IPayloadContext context)
 	{
 		Player player = context.player();
-		Tuple<EquipmentSlot, IModule<ModuleGravitationalModulatingAdditionalUnit>> pair = EntityModuleHelper.findArmorEnabledModule(player, GMUTModules.GRAVITATIONAL_MODULATING_ADDITIONAL_UNIT.get());
+		Tuple<EquipmentSlot, IModule<ModuleGravitationalModulatingAdditionalUnit>> pair = EntityModuleHelper.findArmorEnabledModule(player, GMUTModules.GRAVITATIONAL_MODULATING_ADDITIONAL_UNIT);
 
 		if (pair == null)
 		{
