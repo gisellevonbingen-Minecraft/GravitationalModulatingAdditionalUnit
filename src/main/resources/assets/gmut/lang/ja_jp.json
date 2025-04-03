@@ -1,0 +1,12 @@
+{
+  "constants.gmut.key_category": "Mekanism - 重力変調補填ユニット",
+  "constants.gmut.mod_name": "重力変調補填ユニット",
+  "description.gmut.gravitational_modulating_additional_unit": "「重力変調ユニット」が必要です。追加補填機能を提供します。",
+  "key.gmut.vertical_speed": "垂直速度調整の切り替え",
+  "module.gmut.enabled": "有効",
+  "module.gmut.fix_fov": "視野の修正",
+  "module.gmut.fly_always": "常に重力に逆らう",
+  "module.gmut.gravitational_modulating_additional_unit": "重力変調補填ユニット",
+  "module.gmut.stop_immediately": "飛行ブレーキ",
+  "module.gmut.vertical_speed": "垂直速度調整"
+}
