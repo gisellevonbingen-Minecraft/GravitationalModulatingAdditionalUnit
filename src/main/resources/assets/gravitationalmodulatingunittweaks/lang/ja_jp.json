@@ -1,0 +1,9 @@
+{
+  "description.gravitationalmodulatingunittweaks.gravitational_modulating_additional_unit": "「重力変調ユニット」が必要です。追加補填機能を提供します。",
+  "key.gravitationalmodulatingunittweaks.vertical_speed": "垂直速度調整の切り替え",
+  "module.gravitationalmodulatingunittweaks.fix_fov": "視野の修正",
+  "module.gravitationalmodulatingunittweaks.fly_always": "常に重力に逆らう",
+  "module.gravitationalmodulatingunittweaks.gravitational_modulating_additional_unit": "重力変調補填ユニット",
+  "module.gravitationalmodulatingunittweaks.stop_immediately": "飛行ブレーキ",
+  "module.gravitationalmodulatingunittweaks.vertical_speed": "垂直速度調整"
+}
