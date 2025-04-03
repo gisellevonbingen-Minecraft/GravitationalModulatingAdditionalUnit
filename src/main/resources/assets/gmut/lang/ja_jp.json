@@ -1,6 +1,4 @@
 {
-  "constants.gmut.key_category": "Mekanism - 重力変調補填ユニット",
-  "constants.gmut.mod_name": "重力変調補填ユニット",
   "description.gmut.gravitational_modulating_additional_unit": "「重力変調ユニット」が必要です。追加補填機能を提供します。",
   "key.gmut.vertical_speed": "垂直速度調整の切り替え",
   "module.gmut.enabled": "有効",

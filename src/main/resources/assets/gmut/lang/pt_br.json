@@ -1,8 +1,10 @@
 {
-  "description.gravitationalmodulatingunittweaks.gravitational_modulating_additional_unit": "Requer 'Unidade de Modulação Gravitacional', Fornece recursos adicionais",
-  "module.gravitationalmodulatingunittweaks.fix_fov": "Fix FOV",
-  "module.gravitationalmodulatingunittweaks.fly_always": "Desafiar a gravidade sempre",
-  "module.gravitationalmodulatingunittweaks.gravitational_modulating_additional_unit": "Unidade adicional de Modulação Gravitacional",
-  "module.gravitationalmodulatingunittweaks.stop_immediately": "Parar imediatamente",
-  "module.gravitationalmodulatingunittweaks.vertical_speed": "Modificador de velocidade vertical"
+  "description.gmut.gravitational_modulating_additional_unit": "Requer 'Unidade de Modulação Gravitacional', Fornece recursos adicionais",
+  "key.gmut.vertical_speed": "Modificador de velocidade vertical",
+  
+  "module.gmut.fix_fov": "Fix FOV",
+  "module.gmut.fly_always": "Desafiar a gravidade sempre",
+  "module.gmut.gravitational_modulating_additional_unit": "Unidade adicional de Modulação Gravitacional",
+  "module.gmut.stop_immediately": "Parar imediatamente",
+  "module.gmut.vertical_speed": "Modificador de velocidade vertical"
 }
