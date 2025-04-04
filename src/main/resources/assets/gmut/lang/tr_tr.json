@@ -1,0 +1,12 @@
+{
+  "constants.gmut.key_category": "Mekanism - Yerçekimsel Modüle Etme Ek Birimi",
+  "constants.gmut.mod_name": "Yerçekimsel Modüle Etme Ek Birimi",
+  "description.gmut.gravitational_modulating_additional_unit": "'Yerçekimsel Modüle Etme Birimi' gerektirir, Ek özellikler sağlar",
+  "key.gmut.vertical_speed": "Dikey Hız Değiştirici Düğmesi",
+  "module.gmut.enabled": "Etkin",
+  "module.gmut.fix_fov": "FOV'u Düzelt",
+  "module.gmut.fly_always": "Yerçekimine Her Zaman Meydan Oku",
+  "module.gmut.gravitational_modulating_additional_unit": "Yerçekimsel Modüle Etme Ek Birimi",
+  "module.gmut.stop_immediately": "Hemen Dur",
+  "module.gmut.vertical_speed": "Dikey Hız Değiştirici"
+}
