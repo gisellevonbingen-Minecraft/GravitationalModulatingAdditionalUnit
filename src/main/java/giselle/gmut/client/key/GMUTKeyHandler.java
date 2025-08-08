@@ -6,7 +6,6 @@ import giselle.gmut.common.GMUTLang;
 import giselle.gmut.common.content.gear.mekasuit.EntityModuleHelper;
 import giselle.gmut.common.content.gear.mekasuit.ModuleGravitationalModulatingAdditionalUnit;
 import giselle.gmut.common.network.to_server.PacketSwitchVerticalSpeedPacket;
-import giselle.gmut.common.registries.GMUTModules;
 import mekanism.api.gear.IModule;
 import mekanism.client.ClientRegistrationUtil;
 import mekanism.client.key.MekKeyBindingBuilder;
@@ -36,7 +35,7 @@ public class GMUTKeyHandler
 
 		if (player != null)
 		{
-			Tuple<EquipmentSlot, IModule<ModuleGravitationalModulatingAdditionalUnit>> pair = EntityModuleHelper.findArmorEnabledModule(player, GMUTModules.GRAVITATIONAL_MODULATING_ADDITIONAL_UNIT);
+			Tuple<EquipmentSlot, IModule<ModuleGravitationalModulatingAdditionalUnit>> pair = EntityModuleHelper.getEnabledGMAUModule(player);
 
 			if (pair != null)
 			{

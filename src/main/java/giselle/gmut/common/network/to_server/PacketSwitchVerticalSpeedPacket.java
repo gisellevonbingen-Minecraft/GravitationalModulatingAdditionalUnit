@@ -3,7 +3,6 @@ package giselle.gmut.common.network.to_server;
 import giselle.gmut.GravitationalModulatingUnitTweaks;
 import giselle.gmut.common.content.gear.mekasuit.EntityModuleHelper;
 import giselle.gmut.common.content.gear.mekasuit.ModuleGravitationalModulatingAdditionalUnit;
-import giselle.gmut.common.registries.GMUTModules;
 import mekanism.api.gear.IModule;
 import mekanism.api.gear.IModuleContainer;
 import mekanism.common.content.gear.IModuleContainerItem;
@@ -29,7 +28,7 @@ public record PacketSwitchVerticalSpeedPacket(int shift) implements IMekanismPac
 	public void handle(IPayloadContext context)
 	{
 		Player player = context.player();
-		Tuple<EquipmentSlot, IModule<ModuleGravitationalModulatingAdditionalUnit>> pair = EntityModuleHelper.findArmorEnabledModule(player, GMUTModules.GRAVITATIONAL_MODULATING_ADDITIONAL_UNIT);
+		Tuple<EquipmentSlot, IModule<ModuleGravitationalModulatingAdditionalUnit>> pair = EntityModuleHelper.getEnabledGMAUModule(player);
 
 		if (pair == null)
 		{

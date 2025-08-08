@@ -1,5 +1,6 @@
 package giselle.gmut.common.content.gear.mekasuit;
 
+import giselle.gmut.common.registries.GMUTModules;
 import mekanism.api.gear.ICustomModule;
 import mekanism.api.gear.IModule;
 import mekanism.api.gear.ModuleData;
@@ -12,6 +13,11 @@ import net.neoforged.neoforge.registries.DeferredHolder;
 
 public class EntityModuleHelper
 {
+	public static <T extends ICustomModule<T>> Tuple<EquipmentSlot, IModule<ModuleGravitationalModulatingAdditionalUnit>> getEnabledGMAUModule(LivingEntity entity)
+	{
+		return findArmorEnabledModule(entity, GMUTModules.GRAVITATIONAL_MODULATING_ADDITIONAL_UNIT);
+	}
+
 	public static <T extends ICustomModule<T>> Tuple<EquipmentSlot, IModule<T>> findArmorEnabledModule(LivingEntity entity, DeferredHolder<ModuleData<?>, ModuleData<T>> type)
 	{
 		for (EquipmentSlot slot : EquipmentSlot.values())
