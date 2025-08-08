@@ -2,7 +2,6 @@ package giselle.gmut.common.network.to_server;
 
 import giselle.gmut.common.content.gear.mekasuit.EntityModuleHelper;
 import giselle.gmut.common.content.gear.mekasuit.ModuleGravitationalModulatingAdditionalUnit;
-import giselle.gmut.common.registries.GMUTModules;
 import mekanism.common.content.gear.Module;
 import mekanism.common.network.IMekanismPacket;
 import net.minecraft.entity.player.ServerPlayerEntity;
@@ -22,7 +21,7 @@ public class PacketSwitchVerticalSpeedPacket implements IMekanismPacket
 	public void handle(Context context)
 	{
 		ServerPlayerEntity player = context.getSender();
-		Module<ModuleGravitationalModulatingAdditionalUnit> module = EntityModuleHelper.findArmorEnabledModule(player, GMUTModules.GRAVITATIONAL_MODULATING_ADDITIONAL_UNIT.get());
+		Module<ModuleGravitationalModulatingAdditionalUnit> module = EntityModuleHelper.getEnabledGMAUModule(player);
 
 		if (module != null)
 		{
