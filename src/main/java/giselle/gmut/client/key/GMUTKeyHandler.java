@@ -33,7 +33,7 @@ public class GMUTKeyHandler
 
 		if (player != null)
 		{
-			Module<ModuleGravitationalModulatingAdditionalUnit> module = EntityModuleHelper.findArmorEnabledModule(player, GMUTModules.GRAVITATIONAL_MODULATING_ADDITIONAL_UNIT.get());
+			Module<ModuleGravitationalModulatingAdditionalUnit> module = EntityModuleHelper.getEnabledGMAUModule(player);
 
 			if (module != null)
 			{
