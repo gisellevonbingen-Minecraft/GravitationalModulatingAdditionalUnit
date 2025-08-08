@@ -1,12 +1,10 @@
 package giselle.gmut.client;
 
 import giselle.gmut.GravitationalModulatingUnitTweaks;
+import giselle.gmut.common.content.gear.mekasuit.EntityModuleHelper;
 import giselle.gmut.common.content.gear.mekasuit.ModuleGravitationalModulatingAdditionalUnit;
-import giselle.gmut.common.registries.GMUTModules;
 import mekanism.api.gear.IModule;
-import mekanism.common.content.gear.ModuleHelper;
 import net.minecraft.client.Minecraft;
-import net.minecraft.world.entity.EquipmentSlot;
 import net.minecraft.world.entity.player.Player;
 import net.minecraftforge.api.distmarker.Dist;
 import net.minecraftforge.client.event.ComputeFovModifierEvent;
@@ -21,9 +19,9 @@ public class ClientEventHandler
 	{
 		Minecraft mc = Minecraft.getInstance();
 		Player player = mc.player;
-		IModule<ModuleGravitationalModulatingAdditionalUnit> module = ModuleHelper.get().load(player.getItemBySlot(EquipmentSlot.CHEST), GMUTModules.GRAVITATIONAL_MODULATING_ADDITIONAL_UNIT);
+		IModule<ModuleGravitationalModulatingAdditionalUnit> module = EntityModuleHelper.getEnabledGMAUModule(player);
 
-		if (module != null && module.isEnabled() == true)
+		if (module != null)
 		{
 			boolean fixFOV = module.getCustomInstance().getFixFOV().get();
 

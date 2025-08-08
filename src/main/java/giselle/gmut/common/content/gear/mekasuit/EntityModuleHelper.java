@@ -1,5 +1,6 @@
 package giselle.gmut.common.content.gear.mekasuit;
 
+import giselle.gmut.common.registries.GMUTModules;
 import mekanism.api.gear.ICustomModule;
 import mekanism.api.gear.IModule;
 import mekanism.api.providers.IModuleDataProvider;
@@ -9,6 +10,11 @@ import net.minecraft.world.item.ItemStack;
 
 public class EntityModuleHelper
 {
+	public static IModule<ModuleGravitationalModulatingAdditionalUnit> getEnabledGMAUModule(Entity entity)
+	{
+		return findArmorEnabledModule(entity, GMUTModules.GRAVITATIONAL_MODULATING_ADDITIONAL_UNIT.get());
+	}
+
 	public static <T extends ICustomModule<T>> IModule<T> findArmorEnabledModule(Entity entity, IModuleDataProvider<T> type)
 	{
 		for (ItemStack itemStack : entity.getArmorSlots())
