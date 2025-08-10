@@ -23,6 +23,7 @@ public class ModuleGravitationalModulatingAdditionalUnit implements ICustomModul
 	private IModuleConfigItem<Boolean> stopImmediately;
 	private IModuleConfigItem<Boolean> fixFOV;
 	private IModuleConfigItem<VerticalSpeed> verticalSpeed;
+	private IModuleConfigItem<Boolean> muteModulatingSound;
 
 	@Override
 	public void init(IModule<ModuleGravitationalModulatingAdditionalUnit> module, ModuleConfigItemCreator configItemCreator)
@@ -31,6 +32,7 @@ public class ModuleGravitationalModulatingAdditionalUnit implements ICustomModul
 		this.stopImmediately = configItemCreator.createConfigItem("stop_immediately", GMUTLang.MODULE_STOP_IMMEDIATELY, new ModuleBooleanData(true));
 		this.fixFOV = configItemCreator.createConfigItem("fix_fov", GMUTLang.MODULE_FIX_FOV, new ModuleBooleanData(false));
 		this.verticalSpeed = configItemCreator.createConfigItem("vertical_speed", GMUTLang.MODULE_VERTICAL_SPEED, new ModuleEnumData<>(VerticalSpeed.OFF));
+		this.muteModulatingSound = configItemCreator.createConfigItem("mute_modulating_sound", GMUTLang.MODULE_MUTE_MODULATING_SOUND, new ModuleBooleanData(false));
 	}
 
 	@Override
@@ -145,6 +147,11 @@ public class ModuleGravitationalModulatingAdditionalUnit implements ICustomModul
 	public IModuleConfigItem<VerticalSpeed> getVerticalSpeed()
 	{
 		return this.verticalSpeed;
+	}
+
+	public IModuleConfigItem<Boolean> getMuteModulatingSound()
+	{
+		return this.muteModulatingSound;
 	}
 
 }

@@ -1,0 +1,13 @@
+{
+	"required": true,
+	"package": "giselle.gmut.client.mixin",
+	"minVersion": "0.8.5",
+	"compatibilityLevel": "JAVA_17",
+	"client": [
+		"GravitationalModulationSoundMixin"
+	],
+	"injectors": {
+		"defaultRequire": 1
+	},
+	"refmap": "gmut.mixin.refmap.json"
+}
