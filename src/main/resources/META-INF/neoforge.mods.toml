@@ -3,6 +3,12 @@ loaderVersion="[${neoforge_loader_version},)"
 license="${mod_license}"
 issueTrackerURL="${mod_issues}"
 
+[[mixins]]
+config="gmut.mixin.client.json"
+
+[[mixins]]
+config="gmut.mixin.common.json"
+
 [[mods]]
     modId="${mod_id}"
     version="${mod_version}"

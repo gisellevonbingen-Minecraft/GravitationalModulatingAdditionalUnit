@@ -21,6 +21,7 @@ public class GMUTModules
 							ModuleEnumConfig.create(ModuleGravitationalModulatingAdditionalUnit.VERTICAL_SPEED, VerticalSpeed.OFF), //
 							ModuleEnumConfig.codec(VerticalSpeed.CODEC), //
 							ModuleEnumConfig.streamCodec(VerticalSpeed.STREAM_CODEC))//
+					.addConfig(ModuleBooleanConfig.create(ModuleGravitationalModulatingAdditionalUnit.MUTE_MODULATING_SOUND, false))//
 	);
 
 	private GMUTModules()

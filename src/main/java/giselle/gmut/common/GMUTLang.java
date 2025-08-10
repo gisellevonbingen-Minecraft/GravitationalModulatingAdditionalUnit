@@ -19,6 +19,7 @@ public enum GMUTLang implements ILangEntry
 	MODULE_STOP_IMMEDIATELY("module", "stop_immediately"),
 	MODULE_FIX_FOV("module", "fix_fov"),
 	MODULE_VERTICAL_SPEED("module", "vertical_speed"),
+	MODULE_MUTE_MODULATING_SOUND("module", "mute_modulating_sound"),
 	// EOL
 	;
 

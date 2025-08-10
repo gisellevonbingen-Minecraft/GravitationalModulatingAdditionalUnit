@@ -5,6 +5,7 @@
   "module.gmut.fix_fov": "시야 범위 고정",
   "module.gmut.fly_always": "항상 중력 조작",
   "module.gmut.gravitational_modulating_additional_unit": "중력 조작 부가 기구",
+  "module.gmut.mute_modulating_sound": "중력 조작 음소거",
   "module.gmut.stop_immediately": "정지시 관성 무시",
   "module.gmut.vertical_speed": "수직 이동 속도 배율"
 }

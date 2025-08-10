@@ -23,11 +23,13 @@ public class ModuleGravitationalModulatingAdditionalUnit implements ICustomModul
 	public static final ResourceLocation STOP_IMMEDIATELY = GravitationalModulatingUnitTweaks.rl("stop_immediately");
 	public static final ResourceLocation FIX_FOV = GravitationalModulatingUnitTweaks.rl("fix_fov");
 	public static final ResourceLocation VERTICAL_SPEED = GravitationalModulatingUnitTweaks.rl("vertical_speed");
+	public static final ResourceLocation MUTE_MODULATING_SOUND = GravitationalModulatingUnitTweaks.rl("mute_modulating_sound");
 
 	private boolean flyAlways;
 	private boolean stopImmediately;
 	private boolean fixFOV;
 	private VerticalSpeed verticalSpeed;
+	private boolean muteModulatingSound;
 
 	public ModuleGravitationalModulatingAdditionalUnit(IModule<ModuleGravitationalModulatingAdditionalUnit> module)
 	{
@@ -35,6 +37,7 @@ public class ModuleGravitationalModulatingAdditionalUnit implements ICustomModul
 		this.stopImmediately = module.getBooleanConfigOrFalse(STOP_IMMEDIATELY);
 		this.fixFOV = module.getBooleanConfigOrFalse(FIX_FOV);
 		this.verticalSpeed = module.<VerticalSpeed> getConfigOrThrow(VERTICAL_SPEED).get();
+		this.muteModulatingSound = module.getBooleanConfigOrFalse(MUTE_MODULATING_SOUND);
 	}
 
 	@Override
@@ -157,6 +160,11 @@ public class ModuleGravitationalModulatingAdditionalUnit implements ICustomModul
 	public VerticalSpeed getVerticalSpeed()
 	{
 		return this.verticalSpeed;
+	}
+
+	public boolean getMuteModulatingSound()
+	{
+		return this.muteModulatingSound;
 	}
 
 }
