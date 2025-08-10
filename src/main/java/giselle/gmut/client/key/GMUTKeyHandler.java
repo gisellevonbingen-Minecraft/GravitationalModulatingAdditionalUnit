@@ -7,7 +7,6 @@ import giselle.gmut.common.GMUTLang;
 import giselle.gmut.common.content.gear.mekasuit.EntityModuleHelper;
 import giselle.gmut.common.content.gear.mekasuit.ModuleGravitationalModulatingAdditionalUnit;
 import giselle.gmut.common.network.to_server.PacketSwitchVerticalSpeedPacket;
-import giselle.gmut.common.registries.GMUTModules;
 import mekanism.api.gear.IModule;
 import mekanism.client.ClientRegistrationUtil;
 import mekanism.client.key.MekKeyBindingBuilder;
