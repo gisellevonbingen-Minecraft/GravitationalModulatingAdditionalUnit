@@ -94,6 +94,7 @@ repositories {
 dependencies {
     // Mod
     minecraft "net.minecraftforge:forge:${mc_version}-${forge_api_version}"
+    annotationProcessor "org.spongepowered:mixin:${mixin_version}:processor"
 
     // Implementation
     implementation fg.deobf("mekanism:Mekanism:${mc_version}-${mekanism_version}")
@@ -139,6 +140,12 @@ processResources {
 tasks.withType(JavaCompile) {
 	options.encoding = "UTF-8"
 	options.release = 17
+}
+
+mixin {
+    add sourceSets.main, "gmut.mixin.refmap.json"
+    config "gmut.mixin.common.json"
+    config "gmut.mixin.client.json"
 }
 
 jar {
