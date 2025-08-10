@@ -21,13 +21,14 @@ public class GMUTRecipeProvider extends BaseRecipeProvider
 	@Override
 	protected void addRecipes(Consumer<FinishedRecipe> consumer)
 	{
-		ShapedRecipeBuilder.shaped(GMUTItems.GRAVITATIONAL_MODULATING_ADDITIONAL_UNIT).pattern("ACA").pattern("ABA").pattern("PPP")
-		.define('A', MekanismTags.Items.ALLOYS_REINFORCED)
-		.define('C', MekanismTags.Items.CIRCUITS_ULTIMATE)
-		.define('B', MekanismItems.MODULE_BASE)
-		.define('P', MekanismTags.Items.PELLETS_POLONIUM)
-		.unlockedBy(getHasName(MekanismItems.MODULE_GRAVITATIONAL_MODULATING), has(MekanismItems.MODULE_GRAVITATIONAL_MODULATING))
-		.save(consumer);
+		ShapedRecipeBuilder.shaped(GMUTItems.GRAVITATIONAL_MODULATING_ADDITIONAL_UNIT)//
+				.pattern("ACA").pattern("ABA").pattern("PPP")//
+				.define('A', MekanismTags.Items.ALLOYS_REINFORCED)//
+				.define('C', MekanismTags.Items.CIRCUITS_ULTIMATE)//
+				.define('B', MekanismItems.MODULE_BASE)//
+				.define('P', MekanismTags.Items.PELLETS_POLONIUM)//
+				.unlockedBy(getHasName(MekanismItems.MODULE_GRAVITATIONAL_MODULATING), has(MekanismItems.MODULE_GRAVITATIONAL_MODULATING))//
+				.save(consumer);
 	}
 
 }
